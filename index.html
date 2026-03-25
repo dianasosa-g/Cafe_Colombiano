@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>NAKKLÚS Coffee</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F5E9DA;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #F5E9DA;
+    color: #4E342E;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #4E342E;
+}
+
+/* HERO */
+.hero {
+    background: url('img') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h1 {
+    font-size: 40px;
+}
+
+.btn {
+    background: #C62828;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* SECCIONES */
+.section {
+    padding: 50px;
+    text-align: center;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    margin: 20px;
+}
+
+/* SOSTENIBILIDAD */
+.green {
+    background: #2E7D32;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    background: #4E342E;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div>NAKKLÚS</div>
+    <nav>
+        <a href="#">Nuestro Café</a>
+        <a href="#">¿Por qué?</a>
+        <a href="#">Sostenibilidad</a>
+        <a href="#">Dónde comprar</a>
+        <a href="#">Contacto</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Premium Colombian Coffee,<br>Now in Canada</h1>
+    <button class="btn">Find it at Dollarama</button>
+    <p>100% Colombiano • Sostenible • Calidad Premium</p>
+</section>
+
+<!-- NUESTRO CAFÉ -->
+<section class="section">
+    <h2>Nuestro Café</h2>
+    <div class="grid">
+        <div class="card">
+            <p>Origen: Colombia</p>
+            <p>Grano: Arábica</p>
+            <p>Sabor: Suave</p>
+            <p>Liofilizado</p>
+        </div>
+    </div>
+</section>
+
+<!-- POR QUÉ -->
+<section class="section">
+    <h2>¿Por qué Café Colombiano?</h2>
+    <div class="grid">
+        <div class="card">Altura ideal</div>
+        <div class="card">Clima perfecto</div>
+        <div class="card">Tradición</div>
+        <div class="card">Calidad premium</div>
+    </div>
+</section>
+
+<!-- SOSTENIBILIDAD -->
+<section class="section green">
+    <h2>Sostenibilidad</h2>
+    <div class="grid">
+        <div class="card">Apoyo a caficultores</div>
+        <div class="card">Producción responsable</div>
+        <div class="card">Procesos sostenibles</div>
+    </div>
+    <p>“Café que cuida el planeta”</p>
+</section>
+
+<!-- DÓNDE COMPRAR -->
+<section class="section">
+    <h2>Dónde comprar</h2>
+    <p>Available across Canada</p>
+    <button class="btn">Find your nearest Dollarama</button>
+</section>
+
+<!-- CONTACTO -->
+<footer>
+    <p>NAKKLÚS Coffee</p>
+    <p>info@nakklus.com</p>
+    <p>+1 123 456 7890</p>
+</footer>
+
+</body>
+</html>
