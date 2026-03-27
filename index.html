@@ -227,14 +227,14 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
 }
 
 function initMap() {
-    grupoCercanas.addTo(map);
     map = L.map('map-canvas').setView([56.1304, -106.3468], 4);
+
+    grupoCercanas.addTo(map); // ✅ ahora sí
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    // 🔥 cargar tiendas reales en TODO Canadá
     cargarDollaramaCanada();
 }
 
@@ -287,24 +287,26 @@ function getCurrentLocation() {
 // 🔥 Mostrar cercanas
 function mostrarTiendasCercanas(userLat, userLng) {
 
-    // limpiar mapa
-   grupoCercanas.clearLayers();
+    grupoCercanas.clearLayers();
+
+    const ordenadas = stores.map(store => {
+        const d = calcularDistancia(userLat, userLng, store.lat, store.lng);
+        return { ...store, distancia: d };
+    }).sort((a, b) => a.distancia - b.distancia);
+
     const cercanas = ordenadas.slice(0, 5);
 
     cercanas.forEach(store => {
-      L.marker([store.lat, store.lng]).addTo(grupoCercanas)
+        L.marker([store.lat, store.lng]).addTo(grupoCercanas)
             .bindPopup(`
                 <b>${store.name}</b><br>
                 ${store.info}<br>
-                <b>${store.distancia.toFixed(1)} km</b><br><br>
-                <button onclick="trazarRuta(${store.lat}, ${store.lng})">🧭 Ver ruta</button>
+                <b>${store.distancia.toFixed(1)} km</b>
             `);
     });
 
-    // 🔥 NUEVO: mostrar lista
     mostrarListaTiendas(cercanas);
 }
-
 // 🧭 Dibujar línea (ruta visual)
 function trazarRuta(destLat, destLng) {
     if (!userMarker) return alert("Primero activa tu ubicación");
@@ -418,6 +420,9 @@ async function cargarDollaramaCanada() {
     } catch (error) {
         console.error("Error cargando tiendas:", error);
     }
+}
+function irATienda(lat, lng) {
+    map.setView([lat, lng], 14);
 }
 
 </script>
