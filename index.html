@@ -202,6 +202,7 @@ nav a {
 
 <script>
 let map, userMarker, routeLine;
+let grupoCercanas = L.layerGroup();
 
 const stores = [
     { lat: 43.6532, lng: -79.3832, name: 'Toronto Centro', info: 'Abierto 9am-9pm' },
@@ -226,6 +227,7 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
 }
 
 function initMap() {
+    grupoCercanas.addTo(map);
     map = L.map('map-canvas').setView([56.1304, -106.3468], 4);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -286,22 +288,11 @@ function getCurrentLocation() {
 function mostrarTiendasCercanas(userLat, userLng) {
 
     // limpiar mapa
-    map.eachLayer(layer => {
-        if (layer instanceof L.Marker && layer !== userMarker) {
-            map.removeLayer(layer);
-        }
-    });
-
-    const ordenadas = stores.map(store => {
-        const d = calcularDistancia(userLat, userLng, store.lat, store.lng);
-        return { ...store, distancia: d };
-    }).sort((a, b) => a.distancia - b.distancia);
-
+   grupoCercanas.clearLayers();
     const cercanas = ordenadas.slice(0, 5);
 
     cercanas.forEach(store => {
-        L.marker([store.lat, store.lng])
-            .addTo(map)
+      L.marker([store.lat, store.lng]).addTo(grupoCercanas)
             .bindPopup(`
                 <b>${store.name}</b><br>
                 ${store.info}<br>
