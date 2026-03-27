@@ -51,12 +51,78 @@ nav a {
     color: #4E342E;
 }
 
+.coffee-features {
+    display: flex;
+    justify-content: space-around; /* títulos alineados horizontalmente */
+    flex-wrap: wrap;               /* se ajusta a pantallas pequeñas */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature {
+    text-align: center;
+    max-width: 200px; /* ancho máximo por tarjeta */
+}
+
+.feature img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover;  
+    margin: 10px 0;
+}
+
+.feature h3 {
+    font-size: 18px;
+    color: #4E342E;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #4E342E;
+}
 
 .hero {
-    background: url('img') no-repeat center/cover;
-    color: white;
+    width: 100%;
+    height: 100vh; /* ocupa toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 120px 20px;
+    position: relative;
+
+    background-image: url('../img/1034.png'); /* ruta correcta desde css/ */
+    background-repeat: no-repeat;
+    background-position: center center; /* centra la imagen */
+    background-size: cover; /* ajusta la imagen para cubrir todo el hero */
+    overflow: hidden; /* evita que se vea fuera del hero */
+    color: white;
+}
+
+/* overlay para resaltar texto */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3); /* ajusta transparencia según necesites */
+    z-index: 1;
+}
+
+.hero h1,
+.hero p {
+    position: relative;
+    z-index: 2; /* letras encima del overlay */
+    margin: 0;
+}
+.hero h1,
+.hero p {
+    position: relative;
+    z-index: 2;  /* asegura que el texto esté encima del overlay */
+    color: white; /* letras blancas para resaltar */
 }
 
         .hero h1 {
