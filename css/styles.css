@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F5E9DA;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #e6ccad;
+    color: #4E342E;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #4E342E;
+}
+
+/* HERO */
+.hero {
+    background: url('img') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+        .hero h1 {
+            font-size: 40px;
+        }
+
+        .btn {
+            background: #C62828;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* SECCIONES */
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 250px;
+            margin: 20px;
+        }
+
+        /* SOSTENIBILIDAD */
+        .green {
+            background: #2E7D32;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #4E342E;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* MAPA NUEVO */
+        .map-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .map-controls {
+            margin-bottom: 15px;
+        }
+        .map-controls button, .map-controls input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .map-controls button {
+            background: #C62828;
+            color: white;
+            cursor: pointer;
+        }
+        #map-canvas {
+            height: 500px;
+            width: 100%;
+            border-radius: 8px;
+        }
+        #map-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 📱 MÓVIL */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    .grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    #map-canvas {
+        height: 300px;
+    }
+}
+
+/* 📲 TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .grid {
+        justify-content: center;
+    }
+
+    .card {
+        width: 45%;
+    }
+
+    #map-canvas {
+        height: 400px;
+    }
+}
+
+/* 💻 PC */
+@media (min-width: 1025px) {
+    .card {
+        width: 250px;
+    }
+
+    #map-canvas {
+        height: 500px;
+    }
+}
+
+/* 📺 TV / PANTALLAS GRANDES */
+@media (min-width: 1600px) {
+    body {
+        font-size: 20px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+    .section {
+        padding: 80px;
+    }
+
+    #map-canvas {
+        height: 700px;
+    }
+}
+button {
+    min-height: 44px;
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    max-width: 300px;
+}
+.map-container {
+    width: 95%;
+}
