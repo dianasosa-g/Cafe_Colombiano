@@ -179,12 +179,12 @@ nav a {
         <div class="map-container">
             <div class="map-controls">
                 <button onclick="getCurrentLocation()">📍 Mi Ubicación</button>
-                <input type="text" id="city-search" placeholder="Buscar ciudad (ej: Toronto, Vancouver)">
+                <input type="text" id="city-search" placeholder="Buscar ciudad..." oninput="autocompletarCiudad()">
+<div id="sugerencias" style="background:white; position:absolute; z-index:1000;"></div>
                 <button onclick="searchCity()">🔍 Buscar</button>
             </div>
             <div id="map-canvas"></div>
             <div id="map-info">Encuentra NAKKLÚS en tiendas Dollarama cercanas. Haz clic en markers para detalles.</div>
-            <div id="store-list" style="margin-top:20px; text-align:left;"></div>
         </div>
         <button class="btn">Find your nearest Dollarama</button>
     </section>
@@ -285,27 +285,41 @@ function getCurrentLocation() {
 }
 
 // 🔥 Mostrar cercanas
-function mostrarTiendasCercanas(userLat, userLng) {
+async function mostrarTiendasCercanas(userLat, userLng) {
 
     grupoCercanas.clearLayers();
 
-    const ordenadas = stores.map(store => {
-        const d = calcularDistancia(userLat, userLng, store.lat, store.lng);
-        return { ...store, distancia: d };
-    }).sort((a, b) => a.distancia - b.distancia);
+    const query = `
+    [out:json];
+    (
+      node["name"="Dollarama"](around:20000, ${userLat}, ${userLng});
+    );
+    out;
+    `;
 
-    const cercanas = ordenadas.slice(0, 5);
-
-    cercanas.forEach(store => {
-        L.marker([store.lat, store.lng]).addTo(grupoCercanas)
-            .bindPopup(`
-                <b>${store.name}</b><br>
-                ${store.info}<br>
-                <b>${store.distancia.toFixed(1)} km</b>
-            `);
+    const res = await fetch("https://overpass-api.de/api/interpreter", {
+        method: "POST",
+        body: query
     });
 
-    mostrarListaTiendas(cercanas);
+    const data = await res.json();
+
+    const tiendas = data.elements.map(el => {
+        const lat = el.lat;
+        const lon = el.lon;
+        const d = calcularDistancia(userLat, userLng, lat, lon);
+        return { lat, lon, distancia: d };
+    }).sort((a, b) => a.distancia - b.distancia);
+
+    const top5 = tiendas.slice(0, 5);
+
+    top5.forEach(t => {
+        L.circleMarker([t.lat, t.lon], {
+            color: "red",
+            radius: 8
+        }).addTo(map)
+        .on('click', () => abrirGoogleMaps(t.lat, t.lon));
+    });
 }
 // 🧭 Dibujar línea (ruta visual)
 function trazarRuta(destLat, destLng) {
@@ -423,6 +437,63 @@ async function cargarDollaramaCanada() {
 }
 function irATienda(lat, lng) {
     map.setView([lat, lng], 14);
+}
+async function autocompletarCiudad() {
+    const query = document.getElementById("city-search").value;
+
+    if (query.length < 3) return;
+
+    const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&countrycodes=ca&limit=5`);
+    const data = await res.json();
+
+    const box = document.getElementById("sugerencias");
+    box.innerHTML = "";
+
+    data.forEach(place => {
+        box.innerHTML += `
+            <div style="padding:8px; cursor:pointer;"
+                 onclick="seleccionarCiudad(${place.lat}, ${place.lon}, '${place.display_name}')">
+                 ${place.display_name}
+            </div>
+        `;
+    });
+}
+function seleccionarCiudad(lat, lon, nombre) {
+
+    document.getElementById("city-search").value = nombre;
+    document.getElementById("sugerencias").innerHTML = "";
+
+    map.setView([lat, lon], 12);
+
+    cargarTiendasPorZona(lat, lon);
+}
+async function cargarTiendasPorZona(lat, lon) {
+
+    grupoCercanas.clearLayers();
+
+    const query = `
+    [out:json];
+    (
+      node["name"="Dollarama"](around:15000, ${lat}, ${lon});
+      way["name"="Dollarama"](around:15000, ${lat}, ${lon});
+    );
+    out center;
+    `;
+
+    const res = await fetch("https://overpass-api.de/api/interpreter", {
+        method: "POST",
+        body: query
+    });
+
+    const data = await res.json();
+
+    data.elements.forEach(el => {
+        const lat = el.lat || el.center.lat;
+        const lon = el.lon || el.center.lon;
+
+        L.marker([lat, lon]).addTo(map)
+            .on('click', () => abrirGoogleMaps(lat, lon));
+    });
 }
 
 </script>
