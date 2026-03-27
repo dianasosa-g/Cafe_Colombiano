@@ -179,9 +179,7 @@ nav a {
         <div class="map-container">
             <div class="map-controls">
                 <button onclick="getCurrentLocation()">📍 Mi Ubicación</button>
-                <input type="text" id="city-search" placeholder="Buscar ciudad..." oninput="autocompletarCiudad()">
-<div id="sugerencias" style="background:white; position:absolute; z-index:1000;"></div>
-                <button onclick="searchCity()">🔍 Buscar</button>
+                <input type="text" id="city-search" placeholder="Buscar ciudad...">
             </div>
             <div id="map-canvas"></div>
             <div id="map-info">Encuentra NAKKLÚS en tiendas Dollarama cercanas. Haz clic en markers para detalles.</div>
@@ -198,304 +196,147 @@ nav a {
         </footer>
     </section>
 
-   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap" async defer></script>
 
 <script>
-let grupoCercanas = L.layerGroup();
-let map, userMarker, routeLine;
+let map;
+let markers = [];
+let userMarker;
 
-const stores = [
-    { lat: 43.6532, lng: -79.3832, name: 'Toronto Centro', info: 'Abierto 9am-9pm' },
-    { lat: 49.2827, lng: -123.1207, name: 'Vancouver', info: 'SkyTrain cerca' },
-    { lat: 45.5017, lng: -73.5673, name: 'Montreal', info: 'Viejo Puerto' },
-    { lat: 51.0447, lng: -114.0719, name: 'Calgary', info: 'Nueva apertura' }
-];
-
-// 📏 Distancia
-function calcularDistancia(lat1, lon1, lat2, lon2) {
-    const R = 6371;
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-
-    const a =
-        Math.sin(dLat / 2) ** 2 +
-        Math.cos(lat1 * Math.PI / 180) *
-        Math.cos(lat2 * Math.PI / 180) *
-        Math.sin(dLon / 2) ** 2;
-
-    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
-}
-
+// 🚀 INICIALIZAR MAPA
 function initMap() {
-    map = L.map('map-canvas').setView([56.1304, -106.3468], 4);
+    map = new google.maps.Map(document.getElementById("map-canvas"), {
+        center: { lat: 56.1304, lng: -106.3468 },
+        zoom: 4
+    });
 
-    grupoCercanas.addTo(map); // ✅ ahora sí
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-    cargarDollaramaCanada();
+    initAutocomplete();
 }
 
-// 📍 Mostrar tiendas
-function addStoreMarkers(userLat = null, userLng = null) {
-    stores.forEach(store => {
+// 🔍 AUTOCOMPLETE
+function initAutocomplete() {
+    const input = document.getElementById("city-search");
 
-        let distanciaTexto = "";
+    const autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ["(cities)"],
+        componentRestrictions: { country: "ca" }
+    });
 
-        if (userLat && userLng) {
-            const d = calcularDistancia(userLat, userLng, store.lat, store.lng);
-            distanciaTexto = `<br><b>${d.toFixed(1)} km de ti</b>`;
-        }
+    autocomplete.addListener("place_changed", () => {
+        const place = autocomplete.getPlace();
 
-        const marker = L.marker([store.lat, store.lng]).addTo(map);
+        if (!place.geometry) return;
 
-        marker.bindPopup(`
-            <b>${store.name}</b><br>
-            ${store.info}
-            ${distanciaTexto}
-            <br><br>
-            <button onclick="trazarRuta(${store.lat}, ${store.lng})">🧭 Ver ruta</button>
-            <button onclick="abrirGoogleMaps(${store.lat}, ${store.lng})">📍 Cómo llegar</button>
-        `);
+        const location = place.geometry.location;
+
+        map.setCenter(location);
+        map.setZoom(12);
+
+        buscarTiendas(place.name);
     });
 }
 
-// 📍 Ubicación usuario
+// 🔥 BUSCAR TIENDAS EN CIUDAD
+function buscarTiendas(ciudad) {
+    limpiarMarkers();
+
+    const service = new google.maps.places.PlacesService(map);
+
+    service.textSearch({
+        query: "Dollarama in " + ciudad
+    }, (results, status) => {
+
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+            results.forEach(place => {
+
+                const marker = new google.maps.Marker({
+                    map: map,
+                    position: place.geometry.location
+                });
+
+                marker.addListener("click", () => {
+                    window.open(`https://www.google.com/maps/place/?q=place_id:${place.place_id}`);
+                });
+
+                markers.push(marker);
+            });
+        }
+    });
+}
+
+// 📍 UBICACIÓN DEL USUARIO
 function getCurrentLocation() {
     if (navigator.geolocation) {
+
         navigator.geolocation.getCurrentPosition(pos => {
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
+            const userPos = {
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude
+            };
 
-            map.setView([lat, lng], 6);
+            map.setCenter(userPos);
+            map.setZoom(13);
 
-            if (userMarker) map.removeLayer(userMarker);
+            if (userMarker) userMarker.setMap(null);
 
-            userMarker = L.marker([lat, lng])
-                .addTo(map)
-                .bindPopup("📍 Estás aquí")
-                .openPopup();
+            userMarker = new google.maps.Marker({
+                position: userPos,
+                map: map,
+                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            });
 
-            mostrarTiendasCercanas(lat, lng);
+            buscarCercanos(userPos);
 
-        }, () => alert('Activa geolocalización'));
+        }, () => alert("Activa la ubicación"));
     }
 }
 
-// 🔥 Mostrar cercanas
-async function mostrarTiendasCercanas(userLat, userLng) {
+// 🔴 TOP 5 CERCANOS
+function buscarCercanos(userPos) {
+    limpiarMarkers();
 
-    grupoCercanas.clearLayers();
+    const service = new google.maps.places.PlacesService(map);
 
-    const query = `
-    [out:json];
-    (
-      node["name"="Dollarama"](around:20000, ${userLat}, ${userLng});
-    );
-    out;
-    `;
+    service.nearbySearch({
+        location: userPos,
+        radius: 5000,
+        keyword: "Dollarama"
+    }, (results, status) => {
 
-    const res = await fetch("https://overpass-api.de/api/interpreter", {
-        method: "POST",
-        body: query
-    });
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
 
-    const data = await res.json();
+            const top5 = results.slice(0, 5);
 
-    const tiendas = data.elements.map(el => {
-        const lat = el.lat;
-        const lon = el.lon;
-        const d = calcularDistancia(userLat, userLng, lat, lon);
-        return { lat, lon, distancia: d };
-    }).sort((a, b) => a.distancia - b.distancia);
+            top5.forEach(place => {
 
-    const top5 = tiendas.slice(0, 5);
+                const marker = new google.maps.Marker({
+                    map: map,
+                    position: place.geometry.location,
+                    icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                });
 
-    top5.forEach(t => {
-        L.circleMarker([t.lat, t.lon], {
-            color: "red",
-            radius: 8
-        }).addTo(map)
-        .on('click', () => abrirGoogleMaps(t.lat, t.lon));
+                marker.addListener("click", () => {
+                    window.open(`https://www.google.com/maps/place/?q=place_id:${place.place_id}`);
+                });
+
+                markers.push(marker);
+            });
+        }
     });
 }
-// 🧭 Dibujar línea (ruta visual)
-function trazarRuta(destLat, destLng) {
-    if (!userMarker) return alert("Primero activa tu ubicación");
 
-    const userPos = userMarker.getLatLng();
-
-    if (routeLine) map.removeLayer(routeLine);
-
-    routeLine = L.polyline([
-        [userPos.lat, userPos.lng],
-        [destLat, destLng]
-    ]).addTo(map);
-
-    map.fitBounds(routeLine.getBounds());
+// 🧹 LIMPIAR MARCADORES
+function limpiarMarkers() {
+    markers.forEach(m => m.setMap(null));
+    markers = [];
 }
 
-// 🌍 Abrir navegación real
-function abrirGoogleMaps(lat, lng) {
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
-}
-
-// 🔍 Buscar ciudad
-function searchCity() {
-    const city = document.getElementById('city-search').value;
-    if (!city) return alert('Ingresa una ciudad');
-
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${city}, Canada`)
-        .then(res => res.json())
-        .then(data => {
-            if (data.length > 0) {
-                const lat = parseFloat(data[0].lat);
-                const lon = parseFloat(data[0].lon);
-
-                map.setView([lat, lon], 10);
-
-                if (userMarker) map.removeLayer(userMarker);
-
-                userMarker = L.marker([lat, lon])
-                    .addTo(map)
-                    .bindPopup(city)
-                    .openPopup();
-
-                mostrarTiendasCercanas(lat, lon);
-
-            } else {
-                alert('Ciudad no encontrada');
-            }
-        });
-}
-
-// scroll
+// SCROLL
 function scrollToMap() {
     document.getElementById('donde').scrollIntoView({ behavior: 'smooth' });
-    getCurrentLocation(); // ✅ sin parámetros
+    getCurrentLocation();
 }
-
-window.onload = initMap;
-
-function mostrarListaTiendas(ordenadas) {
-    const contenedor = document.getElementById("store-list");
-
-    contenedor.innerHTML = "<h3>Tiendas cercanas</h3>";
-
-    ordenadas.forEach(store => {
-        contenedor.innerHTML += `
-            <div style="background:#fff; padding:10px; margin:10px 0; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1)">
-                <b>${store.name}</b><br>
-                ${store.info}<br>
-                <b>${store.distancia.toFixed(1)} km</b><br><br>
-
-                <button onclick="irATienda(${store.lat}, ${store.lng})">📍 Ver en mapa</button>
-                <button onclick="abrirGoogleMaps(${store.lat}, ${store.lng})">🧭 Cómo llegar</button>
-            </div>
-        `;
-    });
-}
-async function cargarDollaramaCanada() {
-
-    const query = `
-    [out:json][timeout:25];
-    area["name"="Canada"]->.searchArea;
-    (
-      node["name"="Dollarama"](area.searchArea);
-      way["name"="Dollarama"](area.searchArea);
-      relation["name"="Dollarama"](area.searchArea);
-    );
-    out center;
-    `;
-
-    const url = "https://overpass-api.de/api/interpreter";
-
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            body: query
-        });
-
-        const data = await response.json();
-
-        data.elements.forEach(el => {
-            const lat = el.lat || el.center.lat;
-            const lon = el.lon || el.center.lon;
-
-            L.marker([lat, lon])
-                .addTo(map)
-                .bindPopup("Dollarama real");
-        });
-
-        console.log("Tiendas cargadas:", data.elements.length);
-
-    } catch (error) {
-        console.error("Error cargando tiendas:", error);
-    }
-}
-function irATienda(lat, lng) {
-    map.setView([lat, lng], 14);
-}
-async function autocompletarCiudad() {
-    const query = document.getElementById("city-search").value;
-
-    if (query.length < 3) return;
-
-    const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&countrycodes=ca&limit=5`);
-    const data = await res.json();
-
-    const box = document.getElementById("sugerencias");
-    box.innerHTML = "";
-
-    data.forEach(place => {
-        box.innerHTML += `
-            <div style="padding:8px; cursor:pointer;"
-                 onclick="seleccionarCiudad(${place.lat}, ${place.lon}, '${place.display_name}')">
-                 ${place.display_name}
-            </div>
-        `;
-    });
-}
-function seleccionarCiudad(lat, lon, nombre) {
-
-    document.getElementById("city-search").value = nombre;
-    document.getElementById("sugerencias").innerHTML = "";
-
-    map.setView([lat, lon], 12);
-
-    cargarTiendasPorZona(lat, lon);
-}
-async function cargarTiendasPorZona(lat, lon) {
-
-    grupoCercanas.clearLayers();
-
-    const query = `
-    [out:json];
-    (
-      node["name"="Dollarama"](around:15000, ${lat}, ${lon});
-      way["name"="Dollarama"](around:15000, ${lat}, ${lon});
-    );
-    out center;
-    `;
-
-    const res = await fetch("https://overpass-api.de/api/interpreter", {
-        method: "POST",
-        body: query
-    });
-
-    const data = await res.json();
-
-    data.elements.forEach(el => {
-        const lat = el.lat || el.center.lat;
-        const lon = el.lon || el.center.lon;
-
-        L.marker([lat, lon]).addTo(map)
-            .on('click', () => abrirGoogleMaps(lat, lon));
-    });
-}
-
 </script>
 </body>
 </html>
