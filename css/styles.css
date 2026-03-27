@@ -40,6 +40,10 @@ header {
     background: #e6ccad;
     color: #4E342E;
     font-weight: bold;
+
+    position: sticky;
+    top: 0;         
+    z-index: 1000;  
 }
 nav a {
     margin: 0 10px;
@@ -47,7 +51,7 @@ nav a {
     color: #4E342E;
 }
 
-/* HERO */
+
 .hero {
     background: url('img') no-repeat center/cover;
     color:#4E342E;
