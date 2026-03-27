@@ -5,7 +5,114 @@
 <title>NAKKLÚS Coffee</title>
 
 <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F5E9DA;
+}
 
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #e6ccad;
+    color: #4E342E;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #4E342E;
+}
+
+/* HERO */
+.hero {
+    background: url('img') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+        .hero h1 {
+            font-size: 40px;
+        }
+
+        .btn {
+            background: #C62828;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* SECCIONES */
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 250px;
+            margin: 20px;
+        }
+
+        /* SOSTENIBILIDAD */
+        .green {
+            background: #2E7D32;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #4E342E;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* MAPA NUEVO */
+        .map-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .map-controls {
+            margin-bottom: 15px;
+        }
+        .map-controls button, .map-controls input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .map-controls button {
+            background: #C62828;
+            color: white;
+            cursor: pointer;
+        }
+        #map-canvas {
+            height: 500px;
+            width: 100%;
+            border-radius: 8px;
+        }
+        #map-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
