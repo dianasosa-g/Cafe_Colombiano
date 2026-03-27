@@ -50,7 +50,7 @@ nav a {
 /* HERO */
 .hero {
     background: url('img') no-repeat center/cover;
-    color:#4E342E;
+    color: white;
     text-align: center;
     padding: 120px 20px;
 }
@@ -94,7 +94,7 @@ nav a {
 
         /* FOOTER */
         footer {
-            background: #543e39;
+            background: #4E342E;
             color: white;
             text-align: center;
             padding: 20px;
