@@ -184,6 +184,7 @@ nav a {
             </div>
             <div id="map-canvas"></div>
             <div id="map-info">Encuentra NAKKLÚS en tiendas Dollarama cercanas. Haz clic en markers para detalles.</div>
+            <div id="store-list" style="margin-top:20px; text-align:left;"></div>
         </div>
         <button class="btn">Find your nearest Dollarama</button>
     </section>
@@ -231,7 +232,8 @@ function initMap() {
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    addStoreMarkers();
+    // 🔥 cargar tiendas reales en TODO Canadá
+    cargarDollaramaCanada();
 }
 
 // 📍 Mostrar tiendas
@@ -283,7 +285,7 @@ function getCurrentLocation() {
 // 🔥 Mostrar cercanas
 function mostrarTiendasCercanas(userLat, userLng) {
 
-    // limpiar markers (menos usuario)
+    // limpiar mapa
     map.eachLayer(layer => {
         if (layer instanceof L.Marker && layer !== userMarker) {
             map.removeLayer(layer);
@@ -295,18 +297,21 @@ function mostrarTiendasCercanas(userLat, userLng) {
         return { ...store, distancia: d };
     }).sort((a, b) => a.distancia - b.distancia);
 
-    ordenadas.slice(0, 3).forEach(store => {
-        const marker = L.marker([store.lat, store.lng]).addTo(map);
+    const cercanas = ordenadas.slice(0, 5);
 
-        marker.bindPopup(`
-            <b>${store.name}</b><br>
-            ${store.info}
-            <br><b>${store.distancia.toFixed(1)} km de ti</b>
-            <br><br>
-            <button onclick="trazarRuta(${store.lat}, ${store.lng})">🧭 Ver ruta</button>
-            <button onclick="abrirGoogleMaps(${store.lat}, ${store.lng})">📍 Cómo llegar</button>
-        `);
+    cercanas.forEach(store => {
+        L.marker([store.lat, store.lng])
+            .addTo(map)
+            .bindPopup(`
+                <b>${store.name}</b><br>
+                ${store.info}<br>
+                <b>${store.distancia.toFixed(1)} km</b><br><br>
+                <button onclick="trazarRuta(${store.lat}, ${store.lng})">🧭 Ver ruta</button>
+            `);
     });
+
+    // 🔥 NUEVO: mostrar lista
+    mostrarListaTiendas(cercanas);
 }
 
 // 🧭 Dibujar línea (ruta visual)
@@ -362,18 +367,38 @@ function searchCity() {
 // scroll
 function scrollToMap() {
     document.getElementById('donde').scrollIntoView({ behavior: 'smooth' });
-    getCurrentLocation(lat, lng);
+    getCurrentLocation(); // ✅ sin parámetros
 }
 
 window.onload = initMap;
-async function cargarDollaramaReales(lat, lng) {
+
+function mostrarListaTiendas(ordenadas) {
+    const contenedor = document.getElementById("store-list");
+
+    contenedor.innerHTML = "<h3>Tiendas cercanas</h3>";
+
+    ordenadas.forEach(store => {
+        contenedor.innerHTML += `
+            <div style="background:#fff; padding:10px; margin:10px 0; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1)">
+                <b>${store.name}</b><br>
+                ${store.info}<br>
+                <b>${store.distancia.toFixed(1)} km</b><br><br>
+
+                <button onclick="irATienda(${store.lat}, ${store.lng})">📍 Ver en mapa</button>
+                <button onclick="abrirGoogleMaps(${store.lat}, ${store.lng})">🧭 Cómo llegar</button>
+            </div>
+        `;
+    });
+}
+async function cargarDollaramaCanada() {
 
     const query = `
-    [out:json];
+    [out:json][timeout:25];
+    area["name"="Canada"]->.searchArea;
     (
-      node["name"="Dollarama"](around:50000, ${lat}, ${lng});
-      way["name"="Dollarama"](around:50000, ${lat}, ${lng});
-      relation["name"="Dollarama"](around:50000, ${lat}, ${lng});
+      node["name"="Dollarama"](area.searchArea);
+      way["name"="Dollarama"](area.searchArea);
+      relation["name"="Dollarama"](area.searchArea);
     );
     out center;
     `;
@@ -394,13 +419,16 @@ async function cargarDollaramaReales(lat, lng) {
 
             L.marker([lat, lon])
                 .addTo(map)
-                .bindPopup("Dollarama (OpenStreetMap)");
+                .bindPopup("Dollarama real");
         });
+
+        console.log("Tiendas cargadas:", data.elements.length);
 
     } catch (error) {
         console.error("Error cargando tiendas:", error);
     }
 }
+
 </script>
 </body>
 </html>
