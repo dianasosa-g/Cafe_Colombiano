@@ -466,33 +466,6 @@ body {
     overflow: hidden;
 }
 
-/* EFECTO DE MANCHAS DECORATIVAS (FONDO) */
-.section::before {
-    content: "";
-    position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 250px;
-    height: 250px;
-    background: rgba(198, 40, 40, 0.12);
-    border-radius: 50%;
-    filter: blur(10px);
-    z-index: 0;
-}
-
-.section::after {
-    content: "";
-    position: absolute;
-    bottom: -90px;
-    left: -90px;
-    width: 280px;
-    height: 280px;
-    background: rgba(46, 125, 50, 0.12);
-    border-radius: 50%;
-    filter: blur(12px);
-    z-index: 0;
-}
-
 /* TODO EL CONTENIDO POR ENCIMA DEL DECORADO */
 .section > * {
     position: relative;
