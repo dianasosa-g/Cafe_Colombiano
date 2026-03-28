@@ -37,13 +37,8 @@ nav a {
 
 /* SECCIONES */
 .section {
-    display: none;
     padding: 60px 20px;
     text-align: center;
-}
-
-.section.active {
-    display: block;
 }
 
 /* TITULOS */
@@ -226,6 +221,11 @@ button:hover {
     gap: 25px;
     align-items: stretch; /* 🔥 todas iguales */
 }
+.sostenibilidad-grid .s-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 350px;
+    margin: auto;
+}
 
 /* MAPA */
 .map-container {
@@ -238,7 +238,8 @@ button:hover {
 
 #map-canvas {
     width: 100%;
-    height: clamp(300px, 50vh, 600px);
+    height: clamp(450px, 70vh, 750px);
+    border-radius: 12px;
 }
 .map-controls button {
     background: linear-gradient(135deg, #2E7D32, #1B5E20);
@@ -247,6 +248,24 @@ button:hover {
 
 .map-controls button:hover {
     box-shadow: 0 10px 25px rgba(46,125,50,0.4);
+}
+/* INPUT BUSCAR CIUDAD MÁS GRANDE Y BONITO */
+#city-search {
+    width: 280px;
+    max-width: 100%;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 2px solid #e0c3a3;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* EFECTO CUANDO SE HACE CLICK */
+#city-search:focus {
+    border-color: #C62828;
+    box-shadow: 0 6px 18px rgba(198,40,40,0.25);
 }
 
 /* CONTACTO */
@@ -271,6 +290,15 @@ button:hover {
 .contacto-formulario button {
     width: 100%;
     margin-top: 10px;
+}
+.contacto-redes {
+    margin-top: 25px;
+}
+.red-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
 }
 
 /* ANIMACIONES */
@@ -299,4 +327,416 @@ button:hover {
     .hero-logo {
         width: 140px;
     }
+}
+/* FONDO GENERAL CON MÁS VIDA */
+body {
+    background: linear-gradient(180deg, #F5E9DA 0%, #fbe6cc 50%, #F5E9DA 100%);
+}
+
+/* SECCIONES CON FONDO DIFERENTE PARA QUE NO SE VEA PLANO */
+.section:nth-child(even) {
+    background: rgba(198, 40, 40, 0.04);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* HEADER MÁS ELEGANTE */
+header {
+    background: linear-gradient(90deg, #e6ccad, #f5d7b5);
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+
+/* NAV MÁS BONITO */
+nav a {
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: rgba(198,40,40,0.15);
+    color: #8E0000;
+}
+
+/* HERO BOX MÁS LLAMATIVO */
+.hero-box {
+    border: 3px solid rgba(255, 165, 0, 0.25);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+/* BOTONES MÁS PREMIUM */
+button {
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+/* CARDS MÁS VIVAS */
+.feature,
+.porque-card,
+.s-card {
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transition: 0.35s ease;
+    position: relative;
+}
+
+/* DETALLE DE COLOR ARRIBA DE CADA CARD */
+.feature::before,
+.porque-card::before,
+.s-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(90deg, #C62828, #2E7D32);
+}
+
+/* HOVER MÁS ATRACTIVO */
+.feature:hover,
+.porque-card:hover,
+.s-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+}
+
+/* TITULOS MÁS DESTACADOS */
+h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+/* LINEA DECORATIVA BAJO TITULOS */
+h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #C62828, #2E7D32);
+}
+
+/* MAPA MÁS BONITO */
+.map-container {
+    border: 2px solid rgba(46,125,50,0.2);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+/* FORMULARIO MÁS ELEGANTE */
+.contacto-formulario {
+    border: 2px solid rgba(198,40,40,0.15);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.contacto-formulario input {
+    border-radius: 25px;
+    border: 1px solid rgba(0,0,0,0.15);
+    padding: 12px;
+    transition: 0.3s;
+}
+
+.contacto-formulario input:focus {
+    border-color: #2E7D32;
+    box-shadow: 0 0 0 4px rgba(46,125,50,0.2);
+    outline: none;
+}
+/* ==============================
+   ESTILO PREMIUM MÁS ATRACTIVO
+   SOLO CREMA / NARANJA / VERDE
+================================ */
+
+/* FONDO CON MÁS VIDA */
+body {
+    background: radial-gradient(circle at top, #fff3e3 0%, #F5E9DA 60%, #fbe6cc 100%);
+    color: #4E342E;
+}
+
+/* SECCIONES MÁS ELEGANTES CON DIFERENCIA VISUAL */
+.section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFECTO DE MANCHAS DECORATIVAS (FONDO) */
+.section::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 250px;
+    height: 250px;
+    background: rgba(198, 40, 40, 0.12);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 0;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    bottom: -90px;
+    left: -90px;
+    width: 280px;
+    height: 280px;
+    background: rgba(46, 125, 50, 0.12);
+    border-radius: 50%;
+    filter: blur(12px);
+    z-index: 0;
+}
+
+/* TODO EL CONTENIDO POR ENCIMA DEL DECORADO */
+.section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* HEADER MÁS MODERNO */
+header {
+    background: linear-gradient(90deg, #e6ccad, #fbe6cc);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-bottom: 2px solid rgba(198,40,40,0.12);
+}
+
+/* LOGO MÁS LLAMATIVO */
+.logo span {
+    font-size: 26px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #C62828, #2E7D32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* NAV ESTILO BOTONES */
+nav a {
+    padding: 9px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: linear-gradient(135deg, rgba(198,40,40,0.2), rgba(46,125,50,0.2));
+    transform: translateY(-2px);
+}
+
+/* TITULOS MÁS IMPACTANTES */
+h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: bold;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* LINEA DECORATIVA DEBAJO */
+h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 5px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #C62828, #2E7D32);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* HERO MÁS BRUTAL */
+.hero-box {
+    border: 4px solid rgba(255, 165, 0, 0.2);
+    box-shadow: 0 35px 70px rgba(0,0,0,0.35);
+    transform: scale(1);
+    transition: 0.5s ease;
+}
+
+.hero-box:hover {
+    transform: scale(1.02);
+}
+
+/* OVERLAY MÁS BONITO */
+.hero-box::before {
+    background: linear-gradient(135deg, rgba(0,0,0,0.55), rgba(198,40,40,0.25));
+}
+
+/* TEXTO HERO MÁS DESTACADO */
+.hero-box h1 {
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    letter-spacing: 1px;
+}
+
+/* TEXTO BAJO HERO MÁS BONITO */
+.hero-info p {
+    font-size: 17px;
+    line-height: 1.7;
+    background: rgba(255,255,255,0.55);
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* BENEFICIOS COMO ETIQUETAS */
+.hero-benefits span {
+    background: linear-gradient(135deg, rgba(46,125,50,0.18), rgba(198,40,40,0.18));
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* BOTONES MÁS LLAMATIVOS */
+button {
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 0.6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.28);
+}
+
+/* CARDS MÁS PRO */
+.feature,
+.porque-card,
+.s-card {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(0,0,0,0.06);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+    transition: 0.4s ease;
+}
+
+/* BARRA DE COLOR ARRIBA EN CARDS */
+.feature::before,
+.porque-card::before,
+.s-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 7px;
+    width: 100%;
+    background: linear-gradient(90deg, #C62828, #FFA500, #2E7D32);
+}
+
+/* EFECTO DE BRILLO EN HOVER */
+.feature:hover,
+.porque-card:hover,
+.s-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.22);
+}
+
+/* IMAGENES MÁS IMPACTANTES */
+.porque-card img,
+.s-card img {
+    border-radius: 14px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* TITULOS DE CARDS MÁS VIVOS */
+.feature h3,
+.porque-card h3,
+.s-card h3 {
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.6px;
+    margin-top: 15px;
+    color: #4E342E;
+}
+
+/* MAPA MÁS MODERNO */
+.map-container {
+    border-radius: 18px;
+    border: 2px solid rgba(46,125,50,0.18);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    background: rgba(255,255,255,0.9);
+}
+
+/* INPUT CIUDAD MEJORADO */
+#city-search {
+    width: 340px;
+    max-width: 100%;
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: 2px solid rgba(198,40,40,0.25);
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+#city-search:focus {
+    border-color: #2E7D32;
+    box-shadow: 0 0 0 5px rgba(46,125,50,0.25);
+}
+
+/* FORMULARIO MÁS PREMIUM */
+.contacto-formulario {
+    border-radius: 18px;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+    border: 2px solid rgba(255,165,0,0.18);
+}
+
+/* INPUTS MODERNOS */
+.contacto-formulario input {
+    border-radius: 30px;
+    border: 1px solid rgba(0,0,0,0.18);
+    padding: 14px;
+    font-size: 15px;
+    background: rgba(245,233,218,0.6);
+}
+
+.contacto-formulario input:focus {
+    border-color: #C62828;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(198,40,40,0.22);
+}
+
+/* ICONOS CONTACTO MÁS BONITOS */
+.red-item {
+    background: rgba(46,125,50,0.10);
+    padding: 10px 14px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.red-item:hover {
+    transform: scale(1.03);
+    background: rgba(198,40,40,0.10);
+}
+
+/* ANIMACIÓN MÁS SUAVE */
+.animar {
+    opacity: 0;
+    transform: translateY(50px) scale(0.98);
+    transition: 0.9s ease;
+}
+
+.animar.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }

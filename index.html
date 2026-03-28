@@ -1,1 +1,376 @@
-<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <title>NAKKLÚS Coffee</title> <link rel="stylesheet" href="css/styles.css"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet"> </head> <body> <header> <div class="logo animar"> <span>NAKKLÚS</span> </div> <nav> <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a> <a href="#" onclick="mostrarSeccion('nuestro-cafe')">Nuestro Café</a> <a href="#" onclick="mostrarSeccion('porque')">¿Por qué?</a> <a href="#" onclick="mostrarSeccion('sostenibilidad')">Sostenibilidad</a> <a href="#" onclick="mostrarSeccion('donde')">Dónde comprar</a> <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a> </nav> </header> <section id="inicio" class="section active"> <!-- 🔲 BLOQUE CON IMAGEN --> <div class="hero-box"> <img src="img/logo_transparente-01.png" alt="Logo NAKKLÚS" class="hero-logo"> <h1>Premium Colombian Coffee,<br>Now in Canada</h1> </div> <!-- 📄 CONTENIDO ABAJO --> <div class="hero-info"> <p> Pura Conversa es un café colombiano liofilizado 100% puro, desarrollado para conservar el aroma, sabor y esencia del café recién tostado. </p> <button class="hero-btn" onclick="mostrarSeccion('donde')"> Find it at Dollarama </button> <div class="hero-benefits"> <span>✔ 100% Colombiano</span> <span>✔ Liofilizado premium</span> <span>✔ Sabor suave</span> </div> </div> </section> <section id="nuestro-cafe" class="section"> <h2>Nuestro Café</h2> <div class="coffee-features"> <div class="feature animar"> <h3>origin: Colombia</h3> <img src=img/origen.png alt="Café de Colombia"> <p>Café 100% Colombiano puro cultivado en las montañas de Colombia, con sabor único y suave.</p> </div> <div class="feature animar"> <h3>Grano: Arábica</h3> <img src=img/grano.jpg alt="Grano Arábica"> <p>Granos seleccionados de alta calidad, para un café premium.</p> </div> <div class="feature animar"> <h3>Sabor: Suave</h3> <img src=img/sabor.png alt="Sabor Suave"> <p>Un sabor equilibrado y delicado, perfecto para cualquier momento.</p> </div> <div class="feature animar"> <h3>Liofilizado</h3> <img src=img/cafe.png alt="Café Liofilizado"> <p>Café instantáneo que conserva todo el aroma y sabor.</p> </div> </div> </section> <section id="porque" class="section porque-section"> <h2>¿Por qué Café Colombiano?</h2> <p class="porque-intro"> Colombia es reconocida mundialmente por producir algunos de los mejores cafés del mundo gracias a condiciones únicas que garantizan calidad en cada taza. </p> <div class="porque-grid animar"> <div class="porque-card"> <img src="img/mapa-colombia.jpg" alt="Mapa de Colombia"> <h3>Origen único</h3> <p>Suelos volcánicos ricos en nutrientes y una ubicación privilegiada hacen de Colombia un país ideal para el café.</p> </div> <div class="porque-card"> <img src="img/cafetales.jpg" alt="Cafetales en Colombia"> <h3>Altura perfecta</h3> <p>El café se cultiva en altitudes ideales que permiten un desarrollo lento del grano, mejorando su sabor.</p> </div> <div class="porque-card"> <img src="img/recoleccion.jpg" alt="Recolección manual"> <h3>Recolección manual</h3> <p>Cada grano es seleccionado a mano, garantizando calidad superior en cada lote.</p> </div> <div class="porque-card"> <img src="img/proceso.jpg" alt="Proceso de café"> <h3>Proceso de producción</h3> <p>Procesos cuidados y tradicionales que conservan el aroma y sabor característico del café colombiano.</p> </div> <div class="porque-card animar"> <img src="img/calidad.jpg" alt="Café premium"> <h3>Calidad premium</h3> <p>Una taza suave, aromática y equilibrada reconocida en todo el mundo por su excelencia.</p> </div> </div> </section> <!-- SOSTENIBILIDAD --> <section id="sostenibilidad" class="section sostenibilidad-section"> <h2>Sostenibilidad</h2> <p class="subtitulo">Café que cuida el planeta 🌱</p> <div class="sostenibilidad-grid animar"> <div class="s-card"> <img src="img/reutilizable.jpg" alt="Envase reutilizable"> <h3>Envase reutilizable</h3> <p>Diseñado para tener una segunda vida y reducir el impacto ambiental.</p> </div> <div class="s-card animar"> <img src="img/produccion.jpg" alt="Optimización de recursos"> <h3>Optimización de recursos</h3> <p>Procesos eficientes que reducen consumo de agua y energía.</p> </div> <div class="s-card animar"> <img src="img/agricultura.jpg" alt="Agricultura responsable"> <h3>Prácticas agrícolas responsables</h3> <p>Apoyamos caficultores comprometidos con el medio ambiente.</p> </div> <div class="s-card animar"> <img src="img/desperdicio.jpg" alt="Reducción de desperdicio"> <h3>Reducción del desperdicio</h3> <p>Menos pérdidas en producción, más aprovechamiento del café.</p> </div> </div> </section> <!-- DÓNDE COMPRAR CON MAPA --> <section id="donde" class="section"> <h2>Dónde comprar</h2> <p>Available across Canada at Dollarama stores</p> <div class="map-container animar"> <div class="map-controls"> <button onclick="getCurrentLocation()">📍 Mi Ubicación</button> <input type="text" id="city-search" placeholder="Buscar ciudad..."> </div> <div id="map-canvas"></div> <div id="map-info">Encuentra NAKKLÚS en tiendas Dollarama cercanas. Haz clic en markers para detalles.</div> </div> </section> <!-- CONTACTO --> <section id="contacto" class="section contacto-section"> <div class="contacto-container animar"> <div class="contacto-formulario animar"> <h2>Contáctanos</h2> <form> <input type="text" placeholder="Nombre" required> <input type="text" placeholder="Apellido" required> <input type="email" placeholder="Correo electrónico" required> <button type="submit">Enviar</button> </form> <!-- REDES --> <div class="contacto-redes animar"> <div class="red-item"> <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> <span>+1 123 456 7890</span> </div> <div class="red-item animar"> <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail"> <span>info@nakklus.com</span> </div> </div> </div> </div> </section> <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap" defer> </script> <script> function mostrarSeccion(id) { document.querySelectorAll('.section').forEach(sec => { sec.classList.remove('active'); }); document.getElementById(id).classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); } </script> <script> let map; let markers = []; let userMarker; // 🚀 INICIALIZAR MAPA window.initMap = function() { map = new google.maps.Map(document.getElementById("map-canvas"), { center: { lat: 56.1304, lng: -106.3468 }, zoom: 4 }); ajustarZoomSegunPantalla(); window.addEventListener("resize", ajustarZoomSegunPantalla); initAutocomplete(); }; // 🔍 AUTOCOMPLETE function initAutocomplete() { const input = document.getElementById("city-search"); const autocomplete = new google.maps.places.Autocomplete(input, { types: ["(cities)"], componentRestrictions: { country: "ca" } }); autocomplete.addListener("place_changed", () => { const place = autocomplete.getPlace(); if (!place.geometry) return; const location = place.geometry.location; map.setCenter(location); map.setZoom(12); buscarTiendas(place.name); }); } // 🔥 BUSCAR TIENDAS EN CIUDAD function buscarTiendas(ciudad) { limpiarMarkers(); const service = new google.maps.places.PlacesService(map); service.textSearch({ query: "Dollarama in " + ciudad }, (results, status) => { if (status === google.maps.places.PlacesServiceStatus.OK) { results.forEach(place => { const marker = new google.maps.Marker({ map: map, position: place.geometry.location }); marker.addListener("click", () => { const lat = place.geometry.location.lat(); const lng = place.geometry.location.lng(); const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent); if (esMovil) { window.location.href = google.navigation:q=${lat},${lng}; } else { window.open(https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}, '_blank'); } }); markers.push(marker); }); } }); } // 📍 UBICACIÓN DEL USUARIO function getCurrentLocation() { if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(pos => { const userPos = { lat: pos.coords.latitude, lng: pos.coords.longitude }; map.setCenter(userPos); map.setZoom(13); if (userMarker) userMarker.setMap(null); userMarker = new google.maps.Marker({ position: userPos, map: map, icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }); buscarCercanos(userPos); }, () => alert("Activa la ubicación")); } } // 🔴 TOP 5 CERCANOS function buscarCercanos(userPos) { limpiarMarkers(); const service = new google.maps.places.PlacesService(map); service.nearbySearch({ location: userPos, radius: 5000, keyword: "Dollarama" }, (results, status) => { if (status === google.maps.places.PlacesServiceStatus.OK) { const top5 = results.slice(0, 5); top5.forEach(place => { const marker = new google.maps.Marker({ map: map, position: place.geometry.location, icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" }); marker.addListener("click", () => { window.open(https://www.google.com/maps/place/?q=place_id:${place.place_id}); }); markers.push(marker); }); } }); } // 🧹 LIMPIAR MARCADORES function limpiarMarkers() { markers.forEach(m => m.setMap(null)); markers = []; } // SCROLL function scrollToMap() { document.getElementById('donde').scrollIntoView({ behavior: 'smooth' }); getCurrentLocation(); } function ajustarZoomSegunPantalla() { const width = window.innerWidth; if (width < 600) { map.setZoom(4); } else if (width < 1024) { map.setZoom(5); } else { map.setZoom(6); } } </script> <script> const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("show"); } }); }); document.querySelectorAll('.animar').forEach(el => { observer.observe(el); }); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>NAKKLÚS Coffee</title>
+
+<link rel="stylesheet" href="css/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <div class="logo animar">
+        <span>NAKKLÚS</span>
+    </div>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#nuestro-cafe">Nuestro Café</a>
+        <a href="#porque">¿Por qué?</a>
+        <a href="#sostenibilidad">Sostenibilidad</a>
+        <a href="#donde">Dónde comprar</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- INICIO -->
+<section id="inicio" class="section">
+
+    <div class="hero-box">
+        <img src="img/logo_transparente-01.png" alt="Logo NAKKLÚS" class="hero-logo">
+        <h1>Premium Colombian Coffee,<br>Now in Canada</h1>
+    </div>
+
+    <div class="hero-info">
+        <p>
+            Pura Conversa es un café colombiano liofilizado 100% puro,
+            desarrollado para conservar el aroma, sabor y esencia del café recién tostado.
+        </p>
+
+        <button class="hero-btn" onclick="document.getElementById('donde').scrollIntoView({behavior:'smooth'})">
+            Find it at Dollarama
+        </button>
+
+        <div class="hero-benefits">
+            <span>✔ 100% Colombiano</span>
+            <span>✔ Liofilizado premium</span>
+            <span>✔ Sabor suave</span>
+        </div>
+    </div>
+
+</section>
+
+<!-- NUESTRO CAFÉ -->
+<section id="nuestro-cafe" class="section">
+    <h2>Nuestro Café</h2>
+
+    <div class="coffee-features">
+
+        <div class="feature animar">
+            <h3>origin: Colombia</h3>
+            <img src="img/origen.png" alt="Café de Colombia">
+            <p>Café 100% Colombiano puro cultivado en las montañas de Colombia, con sabor único y suave.</p>
+        </div>
+
+        <div class="feature animar">
+            <h3>Grano: Arábica</h3>
+            <img src="img/grano.jpg" alt="Grano Arábica">
+            <p>Granos seleccionados de alta calidad, para un café premium.</p>
+        </div>
+
+        <div class="feature animar">
+            <h3>Sabor: Suave</h3>
+            <img src="img/sabor.png" alt="Sabor Suave">
+            <p>Un sabor equilibrado y delicado, perfecto para cualquier momento.</p>
+        </div>
+
+        <div class="feature animar">
+            <h3>Liofilizado</h3>
+            <img src="img/cafe.png" alt="Café Liofilizado">
+            <p>Café instantáneo que conserva todo el aroma y sabor.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- POR QUÉ -->
+<section id="porque" class="section porque-section">
+
+    <h2>¿Por qué Café Colombiano?</h2>
+
+    <p class="porque-intro">
+        Colombia es reconocida mundialmente por producir algunos de los mejores cafés del mundo gracias a condiciones únicas que garantizan calidad en cada taza.
+    </p>
+
+    <div class="porque-grid animar">
+
+        <div class="porque-card">
+            <img src="img/mapa-colombia.jpg" alt="Mapa de Colombia">
+            <h3>Origen único</h3>
+            <p>Suelos volcánicos ricos en nutrientes y una ubicación privilegiada hacen de Colombia un país ideal para el café.</p>
+        </div>
+
+        <div class="porque-card">
+            <img src="img/cafetales.jpg" alt="Cafetales en Colombia">
+            <h3>Altura perfecta</h3>
+            <p>El café se cultiva en altitudes ideales que permiten un desarrollo lento del grano, mejorando su sabor.</p>
+        </div>
+
+        <div class="porque-card">
+            <img src="img/recoleccion.jpg" alt="Recolección manual">
+            <h3>Recolección manual</h3>
+            <p>Cada grano es seleccionado a mano, garantizando calidad superior en cada lote.</p>
+        </div>
+
+        <div class="porque-card">
+            <img src="img/proceso.jpg" alt="Proceso de café">
+            <h3>Proceso de producción</h3>
+            <p>Procesos cuidados y tradicionales que conservan el aroma y sabor característico del café colombiano.</p>
+        </div>
+
+        <div class="porque-card animar">
+            <img src="img/calidad.jpg" alt="Café premium">
+            <h3>Calidad premium</h3>
+            <p>Una taza suave, aromática y equilibrada reconocida en todo el mundo por su excelencia.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SOSTENIBILIDAD -->
+<section id="sostenibilidad" class="section sostenibilidad-section">
+
+    <h2>Sostenibilidad</h2>
+    <p class="subtitulo">Café que cuida el planeta 🌱</p>
+
+    <div class="sostenibilidad-grid animar">
+
+        <div class="s-card">
+            <img src="img/reutilizable.jpg" alt="Envase reutilizable">
+            <h3>Envase reutilizable</h3>
+            <p>Diseñado para tener una segunda vida y reducir el impacto ambiental.</p>
+        </div>
+
+        <div class="s-card animar">
+            <img src="img/produccion.jpg" alt="Optimización de recursos">
+            <h3>Optimización de recursos</h3>
+            <p>Procesos eficientes que reducen consumo de agua y energía.</p>
+        </div>
+
+        <div class="s-card animar">
+            <img src="img/agricultura.jpg" alt="Agricultura responsable">
+            <h3>Prácticas agrícolas responsables</h3>
+            <p>Apoyamos caficultores comprometidos con el medio ambiente.</p>
+        </div>
+
+        <div class="s-card animar">
+            <img src="img/desperdicio.jpg" alt="Reducción de desperdicio">
+            <h3>Reducción del desperdicio</h3>
+            <p>Menos pérdidas en producción, más aprovechamiento del café.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MAPA -->
+<section id="donde" class="section">
+    <h2>Dónde comprar</h2>
+    <p>Available across Canada at Dollarama stores</p>
+
+    <div class="map-container animar">
+
+        <div class="map-controls">
+            <button onclick="getCurrentLocation()">📍 Mi Ubicación</button>
+            <input type="text" id="city-search" placeholder="Buscar ciudad...">
+        </div>
+
+        <div id="map-canvas"></div>
+
+        <div id="map-info">
+            Encuentra NAKKLÚS en tiendas Dollarama cercanas.
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section contacto-section">
+
+    <div class="contacto-container animar">
+
+        <div class="contacto-formulario animar">
+            <h2>Contáctanos</h2>
+
+            <form>
+                <input type="text" placeholder="Nombre" required>
+                <input type="text" placeholder="Apellido" required>
+                <input type="email" placeholder="Correo electrónico" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="contacto-redes animar">
+
+                <div class="red-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+                    <span>+1 123 456 7890</span>
+                </div>
+
+                <div class="red-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+                    <span>info@nakklus.com</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GOOGLE MAPS -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap" defer></script>
+
+<script>
+let map, userPos = null;
+let markers = [];
+let service;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map-canvas"), {
+        center: { lat: 56.1304, lng: -106.3468 },
+        zoom: 4
+    });
+
+    service = new google.maps.places.PlacesService(map);
+
+    initAutocomplete();
+    getUserLocation(); 
+}
+
+function initAutocomplete() {
+    const input = document.getElementById("city-search");
+
+    const autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ["(cities)"],
+        componentRestrictions: { country: "ca" }
+    });
+
+    autocomplete.addListener("place_changed", () => {
+        const place = autocomplete.getPlace();
+        if (!place.geometry) return;
+
+        map.setCenter(place.geometry.location);
+        map.setZoom(13);
+
+        buscarDollarama(place.geometry.location);
+    });
+}
+
+function buscarDollarama(location) {
+    limpiarMarkers();
+
+    const request = {
+        location: location,
+        radius: 15000,
+        keyword: "Dollarama"
+    };
+
+    service.nearbySearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            results.forEach(place => {
+                crearMarker(place);
+            });
+
+            document.getElementById("map-info").innerText =
+                "Encontramos " + results.length + " tiendas Dollarama cercanas.";
+        } else {
+            document.getElementById("map-info").innerText =
+                "No se encontraron Dollarama en esta zona.";
+        }
+    });
+}
+
+function crearMarker(place) {
+    const marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location,
+        title: place.name
+    });
+
+    markers.push(marker);
+
+    marker.addListener("click", () => {
+        abrirRuta(place.geometry.location);
+    });
+}
+
+function abrirRuta(destino) {
+    if (!userPos) {
+        alert("No se pudo obtener tu ubicación. Activa el GPS o permisos.");
+        return;
+    }
+
+    const url = `https://www.google.com/maps/dir/?api=1&origin=${userPos.lat},${userPos.lng}&destination=${destino.lat()},${destino.lng()}&travelmode=driving`;
+    window.open(url, "_blank");
+}
+
+function limpiarMarkers() {
+    markers.forEach(marker => marker.setMap(null));
+    markers = [];
+}
+
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            userPos = {
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude
+            };
+
+            new google.maps.Marker({
+                map: map,
+                position: userPos,
+                title: "Tu ubicación",
+                icon: {
+                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                }
+            });
+
+        }, () => {
+            console.log("No se pudo obtener ubicación.");
+        });
+    }
+}
+
+function getCurrentLocation() {
+    if (!navigator.geolocation) return;
+
+    navigator.geolocation.getCurrentPosition(pos => {
+        userPos = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+        };
+
+        map.setCenter(userPos);
+        map.setZoom(14);
+
+        buscarDollarama(userPos);
+    });
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const elementos = document.querySelectorAll(".animar");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.2 });
+
+    elementos.forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
