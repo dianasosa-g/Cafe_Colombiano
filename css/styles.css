@@ -139,11 +139,20 @@ nav a {
 
 .hero-logo {
     position: absolute;
-    top: 20px;      /* ajusta según la altura del menú */
-    right: 20px;    /* distancia del borde derecho */
-    width: 150px;   /* tamaño del logo */
+    top: 0px;   /* debajo del header */
+    left: 10px;  /* 👈 ahora a la izquierda */
+    width: 180px;
     height: auto;
-    z-index: 3;     /* encima del overlay y de la imagen */
+    z-index: 3;
+}
+
+/* 📱 móvil */
+@media (max-width: 600px) {
+    .hero-logo {
+        top: 70px;
+        left: 15px;
+        width: 90px;
+    }
 }
 
 /* overlay para resaltar texto */
@@ -333,4 +342,11 @@ input {
 }
 .map-container {
     width: 95%;
+}
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
 }
