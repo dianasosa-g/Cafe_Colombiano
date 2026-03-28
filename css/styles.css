@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    overflow-x: hidden;
     font-family: Arial, sans-serif;
     background-color: #F5E9DA;
 }
@@ -87,7 +86,7 @@ nav a {
 }
 .hero {
     width: 100%;
-    height: 80vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -157,19 +156,7 @@ nav a {
     z-index: 2;  /* asegura que el texto esté encima del overlay */
     color: rgb(249, 222, 191); /* letras blancas para resaltar */
 }
-.hero h1 {
-    position: absolute;
-    top: 35%; /* 👈 baja el título */
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
-.hero p {
-    position: absolute;
-    top: 45%; /* 👈 baja el subtítulo más abajo */
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
         .hero h1 {
             font-size: 40px;
         }
