@@ -90,10 +90,9 @@ h2 {
 
 /* LOGO GRANDE */
 .hero-logo {
-    width: clamp(160px, 18vw, 260px);
+    width: clamp(240px, 30vw, 420px);
     margin-bottom: 15px;
 }
-
 /* TITULO */
 .hero-box h1 {
     color: #f5e9da;
@@ -755,4 +754,12 @@ body {
     nav a:hover {
         background: rgba(198,40,40,0.15);
     }
+}
+nav a {
+    font-size: 16px;
+}
+nav a {
+    display: inline-block;
+    min-width: 130px;
+    text-align: center;
 }
