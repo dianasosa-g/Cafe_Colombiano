@@ -57,7 +57,49 @@ nav a {
     text-decoration: none;
     color: #4E342E;
 }
+#nuestro-cafe h2 {
+    text-align: center;   /* 👈 centrado */
+    font-size: 42px;      /* 👈 más grande */
+    color: #4E342E;       /* tono café */
+    margin-bottom: 40px;
+}
+#nuestro-cafe h2 {
+    text-align: center;
+    font-size: 42px;
+    color: #4E342E;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif; /* 👈 fuente elegante */
+}
+.feature {
+    background: white; /* fondo del cuadro */
+    padding: 20px;
+    border-radius: 15px; /* bordes redondeados */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* sombra suave */
+    text-align: center;
+    max-width: 220px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature {
+    background: #fffaf3; /* tono crema */
+    border: 1px solid #e0c3a3;
+}
+/* efecto al pasar el mouse */
+.feature:hover {
+    transform: translateY(-8px); /* se eleva */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.feature img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px 0;
+    transition: transform 0.3s ease;
+}
 
+.feature img:hover {
+    transform: scale(1.1);
+}
 .coffee-features {
     display: flex;
     justify-content: space-around; /* títulos alineados horizontalmente */
@@ -169,7 +211,19 @@ nav a {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.feature img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px 0;
 
+    transition: transform 0.3s ease; /* 👈 animación suave */
+}
+
+.feature img:hover {
+    transform: scale(1.2); /* 👈 agranda la imagen */
+}
 .hero p {
     position: absolute;
     top: 45%; /* 👈 baja el subtítulo más abajo */
