@@ -11,13 +11,13 @@
         <div class="logo">
             <span>NAKKLÚS</span>
         </div>
-        <nav>
-            <a href="#nuestrocafe">Our coffee</a>
-            <a href="#porque">¿Por qué?</a>
-            <a href="#sostenibilidad">Sostenibilidad</a>
-            <a href="#donde">Dónde comprar</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+       <nav>
+    <a href="#" onclick="mostrarSeccion('nuestro-cafe')">Nuestro Café</a>
+    <a href="#" onclick="mostrarSeccion('porque')">¿Por qué?</a>
+    <a href="#" onclick="mostrarSeccion('sostenibilidad')">Sostenibilidad</a>
+    <a href="#" onclick="mostrarSeccion('donde')">Dónde comprar</a>
+    <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
+</nav>
     </header>
 
     <section class="hero">
@@ -28,8 +28,8 @@
     </section>
 
 
-    <section id="nuestro-cafe" class="section">
-    <h1>Our coffee</h1>
+  <section id="nuestro-cafe" class="section active">
+    <h2>Nuestro Café</h2>
     <div class="coffee-features">
         <div class="feature">
             <h3>origin: Colombia</h3>
@@ -103,6 +103,21 @@
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap"
 defer>
 </script>
+<script>
+function mostrarSeccion(id) {
+
+    // ocultar todas
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+    });
+
+    // mostrar la seleccionada
+    document.getElementById(id).classList.add('active');
+
+    // subir arriba (mejor UX)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
    
 <script>
 let map;
@@ -165,8 +180,20 @@ function buscarTiendas(ciudad) {
                 });
 
                 marker.addListener("click", () => {
-                    window.open(`https://www.google.com/maps/place/?q=place_id:${place.place_id}`);
-                });
+    const lat = place.geometry.location.lat();
+    const lng = place.geometry.location.lng();
+
+    const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (esMovil) {
+        
+        window.location.href = `google.navigation:q=${lat},${lng}`;
+    } else {
+        
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+    }
+});
+
 
                 markers.push(marker);
             });
