@@ -564,3 +564,70 @@ header {
     font-size: 14px;
     color: #555;
 }
+.s-card img {
+    width: 100%;
+    height: 160px;       /* 👈 mismo alto para todas */
+    object-fit: cover;   /* 👈 recorta sin deformar */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+/* SECCIÓN POR QUÉ */
+.porque-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.porque-section h2 {
+    font-size: 32px;
+    color: #4E342E;
+    margin-bottom: 10px;
+}
+
+.porque-intro {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-size: 16px;
+    color: #5D4037;
+}
+
+/* GRID */
+.porque-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* TARJETAS */
+.porque-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.porque-card:hover {
+    transform: translateY(-5px);
+}
+
+/* IMÁGENES IGUALES */
+.porque-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* TEXTO */
+.porque-card h3 {
+    color: #4E342E;
+    margin-bottom: 8px;
+}
+
+.porque-card p {
+    font-size: 14px;
+    color: #6D4C41;
+}
