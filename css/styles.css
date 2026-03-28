@@ -70,6 +70,58 @@ nav a {
     margin-bottom: 40px;
     font-family: 'Playfair Display', serif; /* 👈 fuente elegante */
 }
+#porque h2 {
+    text-align: center;   /* 👈 centrado */
+    font-size: 42px;      /* 👈 más grande */
+    color: #4E342E;       /* tono café */
+    margin-bottom: 40px;
+}
+#porque h2 {
+    text-align: center;
+    font-size: 42px;
+    color: #4E342E;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif; /* 👈 fuente elegante */
+}
+#porque h2 {
+    letter-spacing: 1px; /* separación de letras */
+    text-transform: uppercase; /* mayúsculas */
+}
+#sostenibilidad h2 {
+    text-align: center;   /* 👈 centrado */
+    font-size: 42px;      /* 👈 más grande */
+    color: #4E342E;       /* tono café */
+    margin-bottom: 40px;
+}
+#sostenibilidad h2 {
+    text-align: center;
+    font-size: 42px;
+    color: #4E342E;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif; /* 👈 fuente elegante */
+}
+#sostenibilidad h2 {
+    letter-spacing: 1px; /* separación de letras */
+    text-transform: uppercase; /* mayúsculas */
+}
+#donde h2 {
+    text-align: center;   /* 👈 centrado */
+    font-size: 42px;      /* 👈 más grande */
+    color: #4E342E;       /* tono café */
+    margin-bottom: 40px;
+}
+#donde h2 {
+    text-align: center;
+    font-size: 42px;
+    color: #4E342E;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif; /* 👈 fuente elegante */
+}
+#donde h2 {
+    letter-spacing: 1px; /* separación de letras */
+    text-transform: uppercase; /* mayúsculas */
+}
+
 .feature {
     background: white; /* fondo del cuadro */
     padding: 20px;
@@ -131,6 +183,22 @@ nav a {
     color: #4E342E;
 }
 .hero {
+  height: 100vh; /* ocupa solo la pantalla */
+  background-image: url('tu-imagen.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+.hero {
     top: 0 !important;
 }
 .hero {
@@ -154,6 +222,10 @@ nav a {
 
     color: white;
 }
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
 .hero h1 {
     font-size: 40px;
     margin-bottom: 10px;
@@ -166,8 +238,8 @@ nav a {
 .hero-logo {
     position: absolute;
     top: 0px;   /* debajo del header */
-    left: 10px;  /* 👈 ahora a la izquierda */
-    width: 180px;
+    left: 5px;  /* 👈 ahora a la izquierda */
+    width: 250px;
     height: auto;
     z-index: 3;
 }
