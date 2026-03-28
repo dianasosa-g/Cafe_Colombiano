@@ -12,6 +12,7 @@
             <span>NAKKLÚS</span>
         </div>
        <nav>
+    <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
     <a href="#" onclick="mostrarSeccion('nuestro-cafe')">Nuestro Café</a>
     <a href="#" onclick="mostrarSeccion('porque')">¿Por qué?</a>
     <a href="#" onclick="mostrarSeccion('sostenibilidad')">Sostenibilidad</a>
@@ -20,17 +21,15 @@
 </nav>
     </header>
 
-    <section class="hero">
-         <img src="img/logo_transparente.png" alt="Logo NAKKLÚS" class="hero-logo">
-        <h1>Premium Colombian Coffee,<br>Now in Canada</h1>
-        <p>100% Colombiano • Sostenible • Calidad Premium</p>
+<section id="inicio" class="section active hero">
+    <img src="img/logo_transparente.png" alt="Logo NAKKLÚS" class="hero-logo">
+    <h1>Premium Colombian Coffee,<br>Now in Canada</h1>
+    <p>100% Colombiano • Sostenible • Calidad Premium</p>
+</section>
 
     </section>
-    <section>id="Cafe Pura Conversa" 
 
-    </section>
-
-  <section id="nuestro-cafe" class="section active">
+  <section id="nuestro-cafe" class="section">
     <h2>Nuestro Café</h2>
     <div class="coffee-features">
         <div class="feature">
@@ -108,17 +107,16 @@ defer>
 <script>
 function mostrarSeccion(id) {
 
-    // ocultar todas
     document.querySelectorAll('.section').forEach(sec => {
         sec.classList.remove('active');
     });
 
-    // mostrar la seleccionada
     document.getElementById(id).classList.add('active');
 
-    // subir arriba (mejor UX)
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+</script>
+
 </script>
    
 <script>
