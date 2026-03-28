@@ -740,3 +740,17 @@ button:hover {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
+/* QUITAR LINEAS QUE DIVIDEN LAS SECCIONES */
+.section:nth-child(even) {
+    background: transparent;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* FONDO MÁS INTERESANTE (CREMA + NARANJA + VERDE) */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, #fff3e3 0%, #F5E9DA 55%, #fbe6cc 100%);
+}
