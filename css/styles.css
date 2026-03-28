@@ -184,7 +184,7 @@ nav a {
 }
 .hero {
   height: 100vh; /* ocupa solo la pantalla */
-  background-image: url('tu-imagen.jpg');
+  background-image: url('img/1034.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
