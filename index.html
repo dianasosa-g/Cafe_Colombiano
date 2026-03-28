@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>NAKKLÚS Coffee</title>
 <link rel="stylesheet" href="css/styles.css">   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -26,8 +27,6 @@
     <h1>Premium Colombian Coffee,<br>Now in Canada</h1>
     <p>100% Colombiano • Sostenible • Calidad Premium</p>
 </section>
-
-    </section>
 
   <section id="nuestro-cafe" class="section">
     <h2>Nuestro Café</h2>
@@ -96,7 +95,6 @@
 
     <div class="contacto-container">
 
-        <!-- IZQUIERDA (FORMULARIO) -->
         <div class="contacto-formulario">
             <h2>Contáctanos</h2>
 
@@ -107,11 +105,20 @@
 
                 <button type="submit">Enviar</button>
             </form>
-        </div>
 
-        <!-- DERECHA (IMAGEN) -->
-        <div class="contacto-imagen">
-            <img src="img/1224.png" alt="Imagen contacto">
+            <!-- REDES -->
+            <div class="contacto-redes">
+                <div class="red-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                    <span>+1 123 456 7890</span>
+                </div>
+
+                <div class="red-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+                    <span>info@nakklus.com</span>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -135,8 +142,6 @@ function mostrarSeccion(id) {
 }
 </script>
 
-</script>
-   
 <script>
 let map;
 let markers = [];
