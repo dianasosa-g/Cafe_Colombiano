@@ -98,26 +98,28 @@
         </footer>
     </section>
 
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap" async defer></script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap"
+defer>
+</script>
    
 <script>
-   
 let map;
 let markers = [];
 let userMarker;
 
 // 🚀 INICIALIZAR MAPA
-function initMap() {
+window.initMap = function() {
     map = new google.maps.Map(document.getElementById("map-canvas"), {
         center: { lat: 56.1304, lng: -106.3468 },
         zoom: 4
     });
 
-    ajustarZoomSegunPantalla(); 
+    ajustarZoomSegunPantalla();
     window.addEventListener("resize", ajustarZoomSegunPantalla);
 
     initAutocomplete();
-}
+};
 
 // 🔍 AUTOCOMPLETE
 function initAutocomplete() {
