@@ -196,20 +196,23 @@ nav a {
 
         /* SECCIONES */
         .section {
-            padding: 50px;
-            text-align: center;
-        }
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 80px; /* debajo del header */
+    padding: 50px;
+    pointer-events: none;
+}
 
-        .grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            width: 250px;
-            margin: 20px;
-        }
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    pointer-events: auto;
+}
 
         /* SOSTENIBILIDAD */
         .green {
@@ -355,4 +358,79 @@ input {
 @keyframes fade {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+/* CONTACTO */
+.contacto-section {
+    padding: 0;
+}
+
+.contacto-container {
+    display: flex;
+    height: 80vh;
+}
+
+/* FORMULARIO */
+.contacto-formulario {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    background: #F5E9DA;
+}
+
+.contacto-formulario h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #4E342E;
+}
+
+.contacto-formulario form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-formulario input {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contacto-formulario button {
+    background: #C62828;
+    color: white;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* IMAGEN DERECHA */
+.contacto-imagen {
+    width: 50%;
+    height: 100%;
+}
+
+.contacto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .contacto-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contacto-formulario,
+    .contacto-imagen {
+        width: 100%;
+    }
+
+    .contacto-imagen img {
+        height: 300px;
+    }
 }
