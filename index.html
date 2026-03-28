@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <div class="logo">
+        <div class="logo animar">
             <span>NAKKLÚS</span>
         </div>
        <nav>
@@ -31,22 +31,22 @@
   <section id="nuestro-cafe" class="section">
     <h2>Nuestro Café</h2>
     <div class="coffee-features">
-        <div class="feature">
+        <div class="feature animar">
             <h3>origin: Colombia</h3>
             <img src=img/origen.png alt="Café de Colombia">
             <p>Café 100% Colombiano puro cultivado en las montañas de Colombia, con sabor único y suave.</p>
         </div>
-        <div class="feature">
+        <div class="feature animar">
             <h3>Grano: Arábica</h3>
             <img src=img/grano.jpg alt="Grano Arábica">
             <p>Granos seleccionados de alta calidad, para un café premium.</p>
         </div>
-        <div class="feature">
+        <div class="feature animar">
             <h3>Sabor: Suave</h3>
             <img src=img/sabor.png alt="Sabor Suave">
             <p>Un sabor equilibrado y delicado, perfecto para cualquier momento.</p>
         </div>
-        <div class="feature">
+        <div class="feature animar">
             <h3>Liofilizado</h3>
             <img src=img/cafe.png alt="Café Liofilizado">
             <p>Café instantáneo que conserva todo el aroma y sabor.</p>
@@ -62,7 +62,7 @@
         Colombia es reconocida mundialmente por producir algunos de los mejores cafés del mundo gracias a condiciones únicas que garantizan calidad en cada taza.
     </p>
 
-    <div class="porque-grid">
+    <div class="porque-grid animar">
 
         <div class="porque-card">
             <img src="img/mapa-colombia.jpg" alt="Mapa de Colombia">
@@ -88,7 +88,7 @@
             <p>Procesos cuidados y tradicionales que conservan el aroma y sabor característico del café colombiano.</p>
         </div>
 
-        <div class="porque-card">
+        <div class="porque-card animar">
             <img src="img/calidad.jpg" alt="Café premium">
             <h3>Calidad premium</h3>
             <p>Una taza suave, aromática y equilibrada reconocida en todo el mundo por su excelencia.</p>
@@ -103,7 +103,7 @@
     <h2>Sostenibilidad</h2>
     <p class="subtitulo">Café que cuida el planeta 🌱</p>
 
-    <div class="sostenibilidad-grid">
+    <div class="sostenibilidad-grid animar">
 
         <div class="s-card">
             <img src="img/reutilizable.jpg" alt="Envase reutilizable">
@@ -111,19 +111,19 @@
             <p>Diseñado para tener una segunda vida y reducir el impacto ambiental.</p>
         </div>
 
-        <div class="s-card">
+        <div class="s-card animar">
             <img src="img/produccion.jpg" alt="Optimización de recursos">
             <h3>Optimización de recursos</h3>
             <p>Procesos eficientes que reducen consumo de agua y energía.</p>
         </div>
 
-        <div class="s-card">
+        <div class="s-card animar">
             <img src="img/agricultura.jpg" alt="Agricultura responsable">
             <h3>Prácticas agrícolas responsables</h3>
             <p>Apoyamos caficultores comprometidos con el medio ambiente.</p>
         </div>
 
-        <div class="s-card">
+        <div class="s-card animar">
             <img src="img/desperdicio.jpg" alt="Reducción de desperdicio">
             <h3>Reducción del desperdicio</h3>
             <p>Menos pérdidas en producción, más aprovechamiento del café.</p>
@@ -137,7 +137,7 @@
     <section id="donde" class="section">
         <h2>Dónde comprar</h2>
         <p>Available across Canada at Dollarama stores</p>
-        <div class="map-container">
+        <div class="map-container animar">
             <div class="map-controls">
                 <button onclick="getCurrentLocation()">📍 Mi Ubicación</button>
                 <input type="text" id="city-search" placeholder="Buscar ciudad...">
@@ -150,9 +150,9 @@
     <!-- CONTACTO -->
 <section id="contacto" class="section contacto-section">
 
-    <div class="contacto-container">
+    <div class="contacto-container animar">
 
-        <div class="contacto-formulario">
+        <div class="contacto-formulario animar">
             <h2>Contáctanos</h2>
 
             <form>
@@ -164,13 +164,13 @@
             </form>
 
             <!-- REDES -->
-            <div class="contacto-redes">
+            <div class="contacto-redes animar">
                 <div class="red-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
                     <span>+1 123 456 7890</span>
                 </div>
 
-                <div class="red-item">
+                <div class="red-item animar">
                     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
                     <span>info@nakklus.com</span>
                 </div>
@@ -364,6 +364,19 @@ function ajustarZoomSegunPantalla() {
         map.setZoom(6);
     }
 }
+</script>
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll('.animar').forEach(el => {
+    observer.observe(el);
+});
 </script>
 </body>
 </html>
