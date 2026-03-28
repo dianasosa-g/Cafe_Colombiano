@@ -754,3 +754,32 @@ body {
     overflow-x: hidden;
     background: linear-gradient(180deg, #fff3e3 0%, #F5E9DA 55%, #fbe6cc 100%);
 }
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        background: rgba(255,255,255,0.6);
+        padding: 10px 14px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+    }
+
+    nav a:hover {
+        background: rgba(198,40,40,0.15);
+    }
+}
