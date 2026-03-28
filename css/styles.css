@@ -99,6 +99,52 @@ nav a {
     overflow: hidden; /* evita que se vea fuera del hero */
     color: white;
 }
+.hero {
+    width: 100%;
+    height: 100vh; /* ocupa toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+
+    background-image: url('../img/1034.png'); /* ruta correcta desde css/ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* overlay para que el texto sea visible */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+/* texto centrado */
+.hero h1,
+.hero p {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+
+.hero-logo {
+    position: absolute;
+    top: 20px;      /* ajusta según la altura del menú */
+    right: 20px;    /* distancia del borde derecho */
+    width: 150px;   /* tamaño del logo */
+    height: auto;
+    z-index: 3;     /* encima del overlay y de la imagen */
+}
 
 /* overlay para resaltar texto */
 .hero::before {
