@@ -168,7 +168,7 @@ nav a {
 .hero p {
     position: relative;
     z-index: 2;  /* asegura que el texto esté encima del overlay */
-    color: white; /* letras blancas para resaltar */
+    color: rgb(249, 222, 191); /* letras blancas para resaltar */
 }
 
         .hero h1 {
