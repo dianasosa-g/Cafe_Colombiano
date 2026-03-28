@@ -165,8 +165,20 @@ function buscarTiendas(ciudad) {
                 });
 
                 marker.addListener("click", () => {
-                    window.open(`https://www.google.com/maps/place/?q=place_id:${place.place_id}`);
-                });
+    const lat = place.geometry.location.lat();
+    const lng = place.geometry.location.lng();
+
+    const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (esMovil) {
+        
+        window.location.href = `google.navigation:q=${lat},${lng}`;
+    } else {
+        
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+    }
+});
+
 
                 markers.push(marker);
             });
