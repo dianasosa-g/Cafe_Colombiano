@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>NAKKLÚS Coffee</title>
 <link rel="stylesheet" href="css/styles.css">   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -25,7 +26,10 @@
     <img src="img/logo_transparente.png" alt="Logo NAKKLÚS" class="hero-logo">
     <h1>Premium Colombian Coffee,<br>Now in Canada</h1>
     <p>100% Colombiano • Sostenible • Calidad Premium</p>
-
+</section>
+<section id="inicio" class="section">
+    <h1>hola mundo de personas lindas como marcela ruano</h1>
+</section>
   <section id="nuestro-cafe" class="section">
     <h2>Nuestro Café</h2>
     <div class="coffee-features">
@@ -93,7 +97,6 @@
 
     <div class="contacto-container">
 
-        <!-- IZQUIERDA (FORMULARIO) -->
         <div class="contacto-formulario">
             <h2>Contáctanos</h2>
 
@@ -104,11 +107,20 @@
 
                 <button type="submit">Enviar</button>
             </form>
-        </div>
 
-        <!-- DERECHA (IMAGEN) -->
-        <div class="contacto-imagen">
-            <img src="img/1224.png" alt="Imagen contacto">
+            <!-- REDES -->
+            <div class="contacto-redes">
+                <div class="red-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                    <span>+1 123 456 7890</span>
+                </div>
+
+                <div class="red-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+                    <span>info@nakklus.com</span>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -132,8 +144,6 @@ function mostrarSeccion(id) {
 }
 </script>
 
-</script>
-   
 <script>
 let map;
 let markers = [];
@@ -202,10 +212,10 @@ function buscarTiendas(ciudad) {
 
     if (esMovil) {
         
-        window.location.href = `google.navigation:q=${lat},${lng}`;
+        window.location.href = google.navigation:q=${lat},${lng};
     } else {
         
-        window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+        window.open(https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}, '_blank');
     }
 });
 
@@ -268,7 +278,7 @@ function buscarCercanos(userPos) {
                 });
 
                 marker.addListener("click", () => {
-                    window.open(`https://www.google.com/maps/place/?q=place_id:${place.place_id}`);
+                    window.open(https://www.google.com/maps/place/?q=place_id:${place.place_id});
                 });
 
                 markers.push(marker);
