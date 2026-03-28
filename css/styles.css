@@ -764,3 +764,33 @@ nav a {
     min-width: 130px;
     text-align: center;
 }
+.slogan {
+    margin-top: 10px;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: bold;
+    letter-spacing: 2px;
+    
+    color: #FFD54F; /* dorado llamativo */
+
+    text-transform: uppercase;
+
+    text-shadow: 
+        0 2px 8px rgba(0,0,0,0.6),
+        0 0 12px rgba(255,165,0,0.6);
+
+    animation: brillo 2s infinite alternate;
+}
+
+/* efecto glow suave */
+@keyframes brillo {
+    from {
+        text-shadow: 
+            0 2px 8px rgba(0,0,0,0.6),
+            0 0 8px rgba(255,165,0,0.5);
+    }
+    to {
+        text-shadow: 
+            0 2px 12px rgba(0,0,0,0.8),
+            0 0 18px rgba(255,165,0,0.9);
+    }
+}
