@@ -349,12 +349,10 @@ input {
 /* CONTACTO */
 /* SECCIÓN CENTRADA */
 .contacto-section {
-    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 80px); /* resta el header */
+    min-height: calc(100vh - 80px);
 }
-
 /* CONTENEDOR */
 .contacto-container {
     width: 100%;
@@ -453,4 +451,62 @@ header {
 #map-canvas {
     width: 100%;
     height: clamp(300px, 50vh, 600px);
+}
+/* 🌱 SOSTENIBILIDAD PRO */
+.sostenibilidad-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.sostenibilidad-section h2 {
+    font-size: 32px;
+    color: #2E7D32;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    color: #4E342E;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+/* GRID */
+.sostenibilidad-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* CARDS */
+.s-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.s-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* IMÁGENES */
+.s-card img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+/* TEXTO */
+.s-card h3 {
+    color: #2E7D32;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.s-card p {
+    font-size: 14px;
+    color: #555;
 }
