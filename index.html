@@ -3,37 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>NAKKLÚS Coffee</title>
-<link rel="stylesheet" href="css/styles.css">   
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <header>
-        <div class="logo animar">
-            <span>NAKKLÚS</span>
-        </div>
-       <nav>
-    <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
-    <a href="#" onclick="mostrarSeccion('nuestro-cafe')">Nuestro Café</a>
-    <a href="#" onclick="mostrarSeccion('porque')">¿Por qué?</a>
-    <a href="#" onclick="mostrarSeccion('sostenibilidad')">Sostenibilidad</a>
-    <a href="#" onclick="mostrarSeccion('donde')">Dónde comprar</a>
-    <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
-</nav>
-    </header>
 
-<section id="inicio" class="section active hero">
+<header>
+    <div class="logo">
+        <span>NAKKLÚS</span>
+    </div>
 
-    <img src="img/logo_transparente-01.png" alt="Logo NAKKLÚS" class="hero-logo">
+    <nav>
+        <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
+        <a href="#" onclick="mostrarSeccion('nuestro-cafe')">Nuestro Café</a>
+        <a href="#" onclick="mostrarSeccion('porque')">¿Por qué?</a>
+        <a href="#" onclick="mostrarSeccion('sostenibilidad')">Sostenibilidad</a>
+        <a href="#" onclick="mostrarSeccion('donde')">Dónde comprar</a>
+        <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
+    </nav>
+</header>
 
-    <div class="hero-content">
+<!-- HERO -->
+<section id="inicio" class="section active">
 
+    <div class="hero-box">
+        <img src="img/logo_transparente-01.png" class="hero-logo" alt="Logo">
         <h1>Premium Colombian Coffee,<br>Now in Canada</h1>
+    </div>
 
-        <p class="hero-sub">
+    <div class="hero-info">
+        <p>
             Pura Conversa es un café colombiano liofilizado 100% puro,
-            con aroma, sabor y calidad premium en cada taza.
+            desarrollado para conservar el aroma, sabor y esencia del café recién tostado.
         </p>
 
         <button class="hero-btn" onclick="mostrarSeccion('donde')">
@@ -43,362 +49,183 @@
         <div class="hero-benefits">
             <span>✔ 100% Colombiano</span>
             <span>✔ Liofilizado premium</span>
-            <span>✔ Sabor suave y equilibrado</span>
-        </div>
-
-    </div>
-
-</section>
-</section>
-  <section id="nuestro-cafe" class="section">
-    <h2>Nuestro Café</h2>
-    <div class="coffee-features">
-        <div class="feature animar">
-            <h3>origin: Colombia</h3>
-            <img src=img/origen.png alt="Café de Colombia">
-            <p>Café 100% Colombiano puro cultivado en las montañas de Colombia, con sabor único y suave.</p>
-        </div>
-        <div class="feature animar">
-            <h3>Grano: Arábica</h3>
-            <img src=img/grano.jpg alt="Grano Arábica">
-            <p>Granos seleccionados de alta calidad, para un café premium.</p>
-        </div>
-        <div class="feature animar">
-            <h3>Sabor: Suave</h3>
-            <img src=img/sabor.png alt="Sabor Suave">
-            <p>Un sabor equilibrado y delicado, perfecto para cualquier momento.</p>
-        </div>
-        <div class="feature animar">
-            <h3>Liofilizado</h3>
-            <img src=img/cafe.png alt="Café Liofilizado">
-            <p>Café instantáneo que conserva todo el aroma y sabor.</p>
+            <span>✔ Sabor suave</span>
         </div>
     </div>
+
 </section>
 
-    
-   <section id="porque" class="section porque-section">
-    <h2>¿Por qué Café Colombiano?</h2>
+<!-- NUESTRO CAFÉ -->
+<section id="nuestro-cafe" class="section">
+<h2>Nuestro Café</h2>
 
-    <p class="porque-intro">
-        Colombia es reconocida mundialmente por producir algunos de los mejores cafés del mundo gracias a condiciones únicas que garantizan calidad en cada taza.
-    </p>
-
-    <div class="porque-grid animar">
-
-        <div class="porque-card">
-            <img src="img/mapa-colombia.jpg" alt="Mapa de Colombia">
-            <h3>Origen único</h3>
-            <p>Suelos volcánicos ricos en nutrientes y una ubicación privilegiada hacen de Colombia un país ideal para el café.</p>
-        </div>
-
-        <div class="porque-card">
-            <img src="img/cafetales.jpg" alt="Cafetales en Colombia">
-            <h3>Altura perfecta</h3>
-            <p>El café se cultiva en altitudes ideales que permiten un desarrollo lento del grano, mejorando su sabor.</p>
-        </div>
-
-        <div class="porque-card">
-            <img src="img/recoleccion.jpg" alt="Recolección manual">
-            <h3>Recolección manual</h3>
-            <p>Cada grano es seleccionado a mano, garantizando calidad superior en cada lote.</p>
-        </div>
-
-        <div class="porque-card">
-            <img src="img/proceso.jpg" alt="Proceso de café">
-            <h3>Proceso de producción</h3>
-            <p>Procesos cuidados y tradicionales que conservan el aroma y sabor característico del café colombiano.</p>
-        </div>
-
-        <div class="porque-card animar">
-            <img src="img/calidad.jpg" alt="Café premium">
-            <h3>Calidad premium</h3>
-            <p>Una taza suave, aromática y equilibrada reconocida en todo el mundo por su excelencia.</p>
-        </div>
-
-    </div>
-</section>
-
-    <!-- SOSTENIBILIDAD -->
- <section id="sostenibilidad" class="section sostenibilidad-section">
-
-    <h2>Sostenibilidad</h2>
-    <p class="subtitulo">Café que cuida el planeta 🌱</p>
-
-    <div class="sostenibilidad-grid animar">
-
-        <div class="s-card">
-            <img src="img/reutilizable.jpg" alt="Envase reutilizable">
-            <h3>Envase reutilizable</h3>
-            <p>Diseñado para tener una segunda vida y reducir el impacto ambiental.</p>
-        </div>
-
-        <div class="s-card animar">
-            <img src="img/produccion.jpg" alt="Optimización de recursos">
-            <h3>Optimización de recursos</h3>
-            <p>Procesos eficientes que reducen consumo de agua y energía.</p>
-        </div>
-
-        <div class="s-card animar">
-            <img src="img/agricultura.jpg" alt="Agricultura responsable">
-            <h3>Prácticas agrícolas responsables</h3>
-            <p>Apoyamos caficultores comprometidos con el medio ambiente.</p>
-        </div>
-
-        <div class="s-card animar">
-            <img src="img/desperdicio.jpg" alt="Reducción de desperdicio">
-            <h3>Reducción del desperdicio</h3>
-            <p>Menos pérdidas en producción, más aprovechamiento del café.</p>
-        </div>
-
+<div class="coffee-features">
+    <div class="feature">
+        <h3>Origen: Colombia</h3>
+        <img src="img/origen.png">
+        <p>Café 100% Colombiano puro cultivado en montañas.</p>
     </div>
 
+    <div class="feature">
+        <h3>Grano: Arábica</h3>
+        <img src="img/grano.jpg">
+        <p>Granos seleccionados de alta calidad.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Sabor: Suave</h3>
+        <img src="img/sabor.png">
+        <p>Sabor equilibrado y delicado.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Liofilizado</h3>
+        <img src="img/cafe.png">
+        <p>Conserva aroma y sabor.</p>
+    </div>
+</div>
 </section>
 
-    <!-- DÓNDE COMPRAR CON MAPA -->
-    <section id="donde" class="section">
-        <h2>Dónde comprar</h2>
-        <p>Available across Canada at Dollarama stores</p>
-        <div class="map-container animar">
-            <div class="map-controls">
-                <button onclick="getCurrentLocation()">📍 Mi Ubicación</button>
-                <input type="text" id="city-search" placeholder="Buscar ciudad...">
-            </div>
-            <div id="map-canvas"></div>
-            <div id="map-info">Encuentra NAKKLÚS en tiendas Dollarama cercanas. Haz clic en markers para detalles.</div>
-        </div>
-    </section>
+<!-- POR QUE -->
+<section id="porque" class="section porque-section">
+<h2>¿Por qué Café Colombiano?</h2>
 
-    <!-- CONTACTO -->
+<p class="porque-intro">
+Colombia produce algunos de los mejores cafés del mundo.
+</p>
+
+<div class="porque-grid">
+
+<div class="porque-card">
+<img src="img/mapa-colombia.jpg">
+<h3>Origen único</h3>
+<p>Suelos ricos y clima ideal.</p>
+</div>
+
+<div class="porque-card">
+<img src="img/cafetales.jpg">
+<h3>Altura perfecta</h3>
+<p>Mejor desarrollo del grano.</p>
+</div>
+
+<div class="porque-card">
+<img src="img/recoleccion.jpg">
+<h3>Recolección manual</h3>
+<p>Selección grano a grano.</p>
+</div>
+
+<div class="porque-card">
+<img src="img/proceso.jpg">
+<h3>Proceso cuidado</h3>
+<p>Tradición y calidad.</p>
+</div>
+
+</div>
+</section>
+
+<!-- SOSTENIBILIDAD -->
+<section id="sostenibilidad" class="section sostenibilidad-section">
+
+<h2>Sostenibilidad</h2>
+<p class="subtitulo">Café que cuida el planeta 🌱</p>
+
+<div class="sostenibilidad-grid">
+
+<div class="s-card">
+<img src="img/reutilizable.jpg">
+<h3>Envase reutilizable</h3>
+</div>
+
+<div class="s-card">
+<img src="img/produccion.jpg">
+<h3>Optimización</h3>
+</div>
+
+<div class="s-card">
+<img src="img/agricultura.jpg">
+<h3>Agricultura responsable</h3>
+</div>
+
+<div class="s-card">
+<img src="img/desperdicio.jpg">
+<h3>Menos desperdicio</h3>
+</div>
+
+</div>
+</section>
+
+<!-- MAPA -->
+<section id="donde" class="section">
+<h2>Dónde comprar</h2>
+
+<div class="map-container">
+
+<div class="map-controls">
+<button onclick="getCurrentLocation()">📍 Mi Ubicación</button>
+<input type="text" id="city-search" placeholder="Buscar ciudad">
+</div>
+
+<div id="map-canvas"></div>
+
+</div>
+</section>
+
+<!-- CONTACTO -->
 <section id="contacto" class="section contacto-section">
 
-    <div class="contacto-container animar">
+<div class="contacto-formulario">
 
-        <div class="contacto-formulario animar">
-            <h2>Contáctanos</h2>
+<h2>Contáctanos</h2>
 
-            <form>
-                <input type="text" placeholder="Nombre" required>
-                <input type="text" placeholder="Apellido" required>
-                <input type="email" placeholder="Correo electrónico" required>
+<form onsubmit="event.preventDefault()">
+<input type="text" placeholder="Nombre" required>
+<input type="text" placeholder="Apellido" required>
+<input type="email" placeholder="Correo" required>
 
-                <button type="submit">Enviar</button>
-            </form>
+<button type="submit">Enviar</button>
+</form>
 
-            <!-- REDES -->
-            <div class="contacto-redes animar">
-                <div class="red-item">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-                    <span>+1 123 456 7890</span>
-                </div>
-
-                <div class="red-item animar">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
-                    <span>info@nakklus.com</span>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap"
-defer>
-</script>
-<script>
-function mostrarSeccion(id) {
-
-    document.querySelectorAll('.section').forEach(sec => {
-        sec.classList.remove('active');
-    });
-
-    document.getElementById(id).classList.add('active');
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-</script>
+<!-- GOOGLE MAPS -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8NZbytu0yfv17oPNJkXUgvq2BCiYUz8&libraries=places&callback=initMap" async defer></script>
 
 <script>
 let map;
 let markers = [];
-let userMarker;
 
-// 🚀 INICIALIZAR MAPA
-window.initMap = function() {
+function initMap() {
     map = new google.maps.Map(document.getElementById("map-canvas"), {
-        center: { lat: 56.1304, lng: -106.3468 },
+        center: { lat: 56.13, lng: -106.34 },
         zoom: 4
     });
-
-    ajustarZoomSegunPantalla();
-    window.addEventListener("resize", ajustarZoomSegunPantalla);
-
-    initAutocomplete();
-};
-
-// 🔍 AUTOCOMPLETE
-function initAutocomplete() {
-    const input = document.getElementById("city-search");
-
-    const autocomplete = new google.maps.places.Autocomplete(input, {
-        types: ["(cities)"],
-        componentRestrictions: { country: "ca" }
-    });
-
-    autocomplete.addListener("place_changed", () => {
-        const place = autocomplete.getPlace();
-
-        if (!place.geometry) return;
-
-        const location = place.geometry.location;
-
-        map.setCenter(location);
-        map.setZoom(12);
-
-        buscarTiendas(place.name);
-    });
 }
 
-// 🔥 BUSCAR TIENDAS EN CIUDAD
-function buscarTiendas(ciudad) {
-    limpiarMarkers();
-
-    const service = new google.maps.places.PlacesService(map);
-
-    service.textSearch({
-        query: "Dollarama in " + ciudad
-    }, (results, status) => {
-
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-
-            results.forEach(place => {
-
-                const marker = new google.maps.Marker({
-                    map: map,
-                    position: place.geometry.location
-                });
-
-                marker.addListener("click", () => {
-    const lat = place.geometry.location.lat();
-    const lng = place.geometry.location.lng();
-
-    const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (esMovil) {
-        
-        window.location.href = google.navigation:q=${lat},${lng};
-    } else {
-        
-        window.open(https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}, '_blank');
-    }
-});
-
-
-                markers.push(marker);
-            });
-        }
-    });
-}
-
-// 📍 UBICACIÓN DEL USUARIO
 function getCurrentLocation() {
-    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(pos => {
 
-        navigator.geolocation.getCurrentPosition(pos => {
-            const userPos = {
-                lat: pos.coords.latitude,
-                lng: pos.coords.longitude
-            };
+        const userPos = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+        };
 
-            map.setCenter(userPos);
-            map.setZoom(13);
+        map.setCenter(userPos);
+        map.setZoom(13);
 
-            if (userMarker) userMarker.setMap(null);
+        new google.maps.Marker({
+            position: userPos,
+            map: map
+        });
 
-            userMarker = new google.maps.Marker({
-                position: userPos,
-                map: map,
-                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-            });
-
-            buscarCercanos(userPos);
-
-        }, () => alert("Activa la ubicación"));
-    }
-}
-
-// 🔴 TOP 5 CERCANOS
-function buscarCercanos(userPos) {
-    limpiarMarkers();
-
-    const service = new google.maps.places.PlacesService(map);
-
-    service.nearbySearch({
-        location: userPos,
-        radius: 5000,
-        keyword: "Dollarama"
-    }, (results, status) => {
-
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-
-            const top5 = results.slice(0, 5);
-
-            top5.forEach(place => {
-
-                const marker = new google.maps.Marker({
-                    map: map,
-                    position: place.geometry.location,
-                    icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-                });
-
-                marker.addListener("click", () => {
-                    window.open(https://www.google.com/maps/place/?q=place_id:${place.place_id});
-                });
-
-                markers.push(marker);
-            });
-        }
     });
 }
 
-// 🧹 LIMPIAR MARCADORES
-function limpiarMarkers() {
-    markers.forEach(m => m.setMap(null));
-    markers = [];
-}
-
-// SCROLL
-function scrollToMap() {
-    document.getElementById('donde').scrollIntoView({ behavior: 'smooth' });
-    getCurrentLocation();
-}
-function ajustarZoomSegunPantalla() {
-    const width = window.innerWidth;
-
-    if (width < 600) {
-        map.setZoom(4);
-    } else if (width < 1024) {
-        map.setZoom(5);
-    } else {
-        map.setZoom(6);
-    }
+function mostrarSeccion(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
 }
 </script>
-<script>
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
-});
 
-document.querySelectorAll('.animar').forEach(el => {
-    observer.observe(el);
-});
-</script>
 </body>
 </html>
